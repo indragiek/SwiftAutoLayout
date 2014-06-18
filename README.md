@@ -7,7 +7,7 @@ SwiftAutoLayout is a very small DSL for Autolayout, intended to provide a more d
 let constraint = view1.al_left() == view2.al_right() * 2.0 + 10.0
 		
 // is equivalent to:
-let constraint = NSLayoutConstraint(item: view1, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: view2, attribute: NSLayoutAttribute.Left, multiplier: 2.0, constant: 10.0)
+let constraint = NSLayoutConstraint(item: view1, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: view2, attribute: NSLayoutAttribute.Right, multiplier: 2.0, constant: 10.0)
 ```
 
 You may notice that this looks a lot like the linear equation that a constraint represents. From the [Apple documentation](https://developer.apple.com/library/mac/documentation/AppKit/Reference/NSLayoutConstraint_Class/NSLayoutConstraint/NSLayoutConstraint.html):
