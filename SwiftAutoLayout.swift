@@ -13,8 +13,17 @@ struct ALOperand {
         return NSLayoutConstraint(item: view, attribute: attribute, relatedBy: relation, toItem: right.view, attribute: right.attribute, multiplier: right.multiplier, constant: right.constant)
     }
     
+    func relateTo(right: CGFloat, relation: NSLayoutRelation) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: view, attribute: attribute, relatedBy: relation, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: right)
+    }
+    
     /// Equivalent to NSLayoutRelation.Equal
     func equalTo(right: ALOperand) -> NSLayoutConstraint {
+        return relateTo(right, relation: .Equal)
+    }
+    
+    /// Equivalent to NSLayoutRelation.Equal
+    func equalTo(right: CGFloat) -> NSLayoutConstraint {
         return relateTo(right, relation: .Equal)
     }
     
@@ -23,8 +32,18 @@ struct ALOperand {
         return relateTo(right, relation: .GreaterThanOrEqual)
     }
     
+    /// Equivalent to NSLayoutRelation.GreaterThanOrEqual
+    func greaterThanOrEqualTo(right: CGFloat) -> NSLayoutConstraint {
+        return relateTo(right, relation: .GreaterThanOrEqual)
+    }
+    
     /// Equivalent to NSLayoutRelation.LessThanOrEqual
     func lessThanOrEqualTo(right: ALOperand) -> NSLayoutConstraint {
+        return relateTo(right, relation: .LessThanOrEqual)
+    }
+    
+    /// Equivalent to NSLayoutRelation.LessThanOrEqual
+    func lessThanOrEqualTo(right: CGFloat) -> NSLayoutConstraint {
         return relateTo(right, relation: .LessThanOrEqual)
     }
 }
@@ -54,14 +73,29 @@ struct ALOperand {
 	return left.equalTo(right)
 }
 
+/// Equivalent to NSLayoutRelation.Equal
+@infix func == (left: ALOperand, right: CGFloat) -> NSLayoutConstraint {
+    return left.equalTo(right)
+}
+
 /// Equivalent to NSLayoutRelation.GreaterThanOrEqual
 @infix func >= (left: ALOperand, right: ALOperand) -> NSLayoutConstraint {
 	return left.greaterThanOrEqualTo(right)
 }
 
+/// Equivalent to NSLayoutRelation.GreaterThanOrEqual
+@infix func >= (left: ALOperand, right: CGFloat) -> NSLayoutConstraint {
+    return left.greaterThanOrEqualTo(right)
+}
+
 /// Equivalent to NSLayoutRelation.LessThanOrEqual
 @infix func <= (left: ALOperand, right: ALOperand) -> NSLayoutConstraint {
 	return left.lessThanOrEqualTo(right)
+}
+
+/// Equivalent to NSLayoutRelation.LessThanOrEqual
+@infix func <= (left: ALOperand, right: CGFloat) -> NSLayoutConstraint {
+    return left.lessThanOrEqualTo(right)
 }
 
 extension UIView {

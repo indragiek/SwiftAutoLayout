@@ -103,4 +103,18 @@ class SwiftAutoLayoutTests: XCTestCase {
         XCTAssertEqual(constraint.constant, 0.0, "Expect constraint constant to be 0.0 when expression is on wrong side of the relation")
         XCTAssertEqual(constraint.multiplier, 1.0, "Expect constraint multiplier to be 1.0 when expression is on wrong side of the relation")
     }
+    
+    func testRelationsWithoutSecondView() {
+        let constraints = [view1.al_width() == 10.0 * 2.0,
+                           view1.al_width().equalTo(10.0 * 2.0),
+                           view1.al_width() >= 10.0 * 2.0,
+                           view1.al_width().greaterThanOrEqualTo(10.0 * 2.0),
+                           view1.al_width() <= 10.0 * 2.0,
+                           view1.al_width().lessThanOrEqualTo(10.0 * 2.0)]
+        
+        for constraint in constraints {
+            XCTAssertEqual(constraint.constant, 20.0, "Expect constraint constant to be 20.0")
+            XCTAssertEqual(constraint.multiplier, 1.0, "Expect constraint multiplier to be 0.0")
+        }
+    }
 }
