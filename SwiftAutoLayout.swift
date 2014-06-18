@@ -4,10 +4,10 @@
 import UIKit
 
 struct ALOperand {
-	let view: UIView
-	let attribute: NSLayoutAttribute
-	let multiplier: CGFloat
-	let constant: CGFloat
+    let view: UIView
+    let attribute: NSLayoutAttribute
+    let multiplier: CGFloat
+    let constant: CGFloat
     
     func relateTo(right: ALOperand, relation: NSLayoutRelation) -> NSLayoutConstraint {
         return NSLayoutConstraint(item: view, attribute: attribute, relatedBy: relation, toItem: right.view, attribute: right.attribute, multiplier: right.multiplier, constant: right.constant)
