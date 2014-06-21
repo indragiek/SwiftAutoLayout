@@ -134,7 +134,11 @@ class SwiftAutoLayoutTests: XCTestCase {
         let constraintBase = view1.al_left() == view2.al_right()
         XCTAssertEqual(constraintBase.priority, 1000)
 
-        constraintBase ! 250
-        XCTAssertEqual(constraintBase.priority, 250)
+        let adjustedConstraint = constraintBase ! 250
+        XCTAssertEqual(constraintBase.priority, 1000, "Original constraint priority should be unchanged")
+        XCTAssertEqual(adjustedConstraint.priority, 250)
+
+        let singleViewConstraint = view1.al_width() == 10.0 ! 400
+        XCTAssertEqual(singleViewConstraint.priority, 400)
     }
 }
