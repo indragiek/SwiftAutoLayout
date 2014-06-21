@@ -125,20 +125,20 @@ class SwiftAutoLayoutTests: XCTestCase {
     }
 
     func testConstraintPriority() {
-        let constraint500 = view1.al_left() == view2.al_right() + 10.0 ! 500
+        let constraint500 = view1.al_left() == view2.al_right() + 10.0 !! 500
         XCTAssertEqual(constraint500.priority, 500)
 
-        let constraint999 = view1.al_left() == view2.al_right() + 10.0 ! UILayoutPriority(UILayoutPriorityRequired) - 1
+        let constraint999 = view1.al_left() == view2.al_right() + 10.0 !! UILayoutPriority(UILayoutPriorityRequired) - 1
         XCTAssertEqual(constraint999.priority, 999)
 
         let constraintBase = view1.al_left() == view2.al_right()
         XCTAssertEqual(constraintBase.priority, 1000)
 
-        let adjustedConstraint = constraintBase ! 250
+        let adjustedConstraint = constraintBase !! 250
         XCTAssertEqual(constraintBase.priority, 1000, "Original constraint priority should be unchanged")
         XCTAssertEqual(adjustedConstraint.priority, 250)
 
-        let singleViewConstraint = view1.al_width() == 10.0 ! 400
+        let singleViewConstraint = view1.al_width() == 10.0 !! 400
         XCTAssertEqual(singleViewConstraint.priority, 400)
     }
 }
