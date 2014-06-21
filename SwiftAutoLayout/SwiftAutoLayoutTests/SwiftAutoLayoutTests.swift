@@ -101,6 +101,7 @@ class SwiftAutoLayoutTests: XCTestCase {
         XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.Right, "Expect second attribute to be NSLayoutAttribute.Right")
         XCTAssertEqual(constraint.constant, 10.0, "Expect constraint constant to be 10.0")
         XCTAssertEqual(constraint.multiplier, 4.0, "Expect constraint multiplier to be 4.0")
+        XCTAssertEqual(constraint.priority, 1000, "Expect constraint priority to be required")
     }
     
     func testConstantMultiplierOnWrongSide() {
@@ -121,5 +122,19 @@ class SwiftAutoLayoutTests: XCTestCase {
             XCTAssertEqual(constraint.constant, 20.0, "Expect constraint constant to be 20.0")
             XCTAssertEqual(constraint.multiplier, 1.0, "Expect constraint multiplier to be 0.0")
         }
+    }
+
+    func testConstraintPriority() {
+        let constraint500 = view1.al_left() == view2.al_right() + 10.0 ! 500
+        XCTAssertEqual(constraint500.priority, 500)
+
+        let constraint999 = view1.al_left() == view2.al_right() + 10.0 ! UILayoutPriority(UILayoutPriorityRequired) - 1
+        XCTAssertEqual(constraint999.priority, 999)
+
+        let constraintBase = view1.al_left() == view2.al_right()
+        XCTAssertEqual(constraintBase.priority, 1000)
+
+        constraintBase ! 250
+        XCTAssertEqual(constraintBase.priority, 250)
     }
 }

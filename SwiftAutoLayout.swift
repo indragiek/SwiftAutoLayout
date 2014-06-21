@@ -98,6 +98,15 @@ struct ALOperand {
     return left.lessThanOrEqualTo(right)
 }
 
+operator infix ! {}
+
+/// Sets the priority of the constraint, and returns the same constraint.
+/// (Is this operator too obtuse? Should it return a new instance of NSLayoutConstraint?)
+@infix func ! (constraint: NSLayoutConstraint, priority: UILayoutPriority) -> NSLayoutConstraint {
+	constraint.priority = priority
+    return constraint
+}
+
 extension UIView {
     func al_operand(attribute: NSLayoutAttribute) -> ALOperand {
         return ALOperand(view: self, attribute: attribute, multiplier: 1.0, constant: 0.0)
