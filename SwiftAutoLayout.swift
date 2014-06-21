@@ -101,7 +101,6 @@ struct ALOperand {
 operator infix !! {}
 
 /// Sets the priority of the constraint, and returns the same constraint.
-/// (Is this operator too obtuse? Should it return a new instance of NSLayoutConstraint?)
 @infix func !! (constraint: NSLayoutConstraint, priority: UILayoutPriority) -> NSLayoutConstraint {
     let c = constraint
     let adjustedConstraint = NSLayoutConstraint(item: c.firstItem, attribute: c.firstAttribute, relatedBy: c.relation, toItem: c.secondItem, attribute: c.secondAttribute, multiplier: c.multiplier, constant: c.constant)
