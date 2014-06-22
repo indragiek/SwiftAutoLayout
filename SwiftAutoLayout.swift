@@ -3,11 +3,19 @@
 
 import UIKit
 
-struct ALOperand {
+@objc class ALOperand {
     let view: UIView
     let attribute: NSLayoutAttribute
     let multiplier: CGFloat
     let constant: CGFloat
+    
+    /// Designated initializer
+    init (view: UIView, attribute: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat) {
+        self.view = view
+        self.attribute = attribute
+        self.multiplier = multiplier
+        self.constant = constant
+    }
     
     func relateTo(right: ALOperand, relation: NSLayoutRelation) -> NSLayoutConstraint {
         return NSLayoutConstraint(item: view, attribute: attribute, relatedBy: relation, toItem: right.view, attribute: right.attribute, multiplier: right.multiplier, constant: right.constant)
@@ -110,57 +118,57 @@ extension UIView {
     //
     
     /// Equivalent to NSLayoutAttribute.Left
-    func al_left() -> ALOperand {
+    var al_left: ALOperand {
         return al_operand(.Left)
     }
     
     /// Equivalent to NSLayoutAttribute.Right
-    func al_right() -> ALOperand {
+    var al_right: ALOperand {
         return al_operand(.Right)
     }
     
     /// Equivalent to NSLayoutAttribute.Top
-    func al_top() -> ALOperand {
+    var al_top: ALOperand {
         return al_operand(.Top)
     }
     
     /// Equivalent to NSLayoutAttribute.Bottom
-    func al_bottom() -> ALOperand {
+    var al_bottom: ALOperand {
         return al_operand(.Bottom)
     }
     
     /// Equivalent to NSLayoutAttribute.Leading
-    func al_leading() -> ALOperand {
+    var al_leading: ALOperand {
         return al_operand(.Leading)
     }
     
     /// Equivalent to NSLayoutAttribute.Trailing
-    func al_trailing() -> ALOperand {
+    var al_trailing: ALOperand {
         return al_operand(.Trailing)
     }
     
     /// Equivalent to NSLayoutAttribute.Width
-    func al_width() -> ALOperand {
+    var al_width: ALOperand {
         return al_operand(.Width)
     }
     
     /// Equivalent to NSLayoutAttribute.Height
-    func al_height() -> ALOperand {
+    var al_height: ALOperand {
         return al_operand(.Height)
     }
     
     /// Equivalent to NSLayoutAttribute.CenterX
-    func al_centerX() -> ALOperand {
+    var al_centerX: ALOperand {
         return al_operand(.CenterX)
     }
     
     /// Equivalent to NSLayoutAttribute.CenterY
-    func al_centerY() -> ALOperand {
+    var al_centerY: ALOperand {
         return al_operand(.CenterY)
     }
     
     /// Equivalent to NSLayoutAttribute.Baseline
-    func al_baseline() -> ALOperand {
+    var al_baseline: ALOperand {
         return al_operand(.Baseline)
     }
 }
