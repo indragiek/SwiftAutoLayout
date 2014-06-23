@@ -37,6 +37,14 @@ let constraint = view1.al_left.equalTo(view2.al_right * 2.0 + 10.0))
 ```
 `equalTo()`, `greaterThanOrEqualTo()`, and `lessThanOrEqualTo()` are equivalent to `==`, `>=`, and `<=`, respectively.
 
+### Priorities
+
+The priority of a constraint can be set using the `!` operator:
+
+```swift
+let constraint = view1.al_left() == view2.al_right() * 2.0 + 10.0  ! 500
+```
+
 ### Tests?
 
 ####[**Yes.**](https://github.com/indragiek/SwiftAutoLayout/blob/master/SwiftAutoLayout/SwiftAutoLayoutTests/SwiftAutoLayoutTests.swift)

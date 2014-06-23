@@ -125,6 +125,16 @@ import UIKit
     return left.lessThanOrEqualToConstant(right)
 }
 
+operator infix ! {}
+
+/// Sets the priority of the constraint, and returns the same constraint.
+@infix func ! (constraint: NSLayoutConstraint, priority: UILayoutPriority) -> NSLayoutConstraint {
+    let c = constraint
+    let adjustedConstraint = NSLayoutConstraint(item: c.firstItem, attribute: c.firstAttribute, relatedBy: c.relation, toItem: c.secondItem, attribute: c.secondAttribute, multiplier: c.multiplier, constant: c.constant)
+    adjustedConstraint.priority = priority
+    return adjustedConstraint
+}
+
 extension UIView {
     func al_operand(attribute: NSLayoutAttribute) -> ALLayoutItem {
         return ALLayoutItem(view: self, attribute: attribute)
