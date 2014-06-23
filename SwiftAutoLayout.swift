@@ -3,6 +3,12 @@
 
 import UIKit
 
+// Using class instead of a struct temporarily to work around a compiler bug when
+// defining computed properties on class extensions that return types that are
+// not bridgable to Objective-C (e.g. structs).
+//
+// Repro case: https://gist.github.com/indragiek/0b163d8a1d998aa44ff6
+// rdar://17409615, OpenRadar: http://www.openradar.me/radar?id=4588084989526016
 @objc class ALOperand {
     let view: UIView
     let attribute: NSLayoutAttribute
@@ -20,6 +26,13 @@ import UIKit
         self.view = view
         self.attribute = attribute
     }
+    
+    // relateTo(), equalTo(), greaterThanOrEqualTo(), and lessThanOrEqualTo() used to be overloaded functions
+    // instead of having two separately named functions (e.g. relateTo() and relateToConstant()) but they had
+    // to be renamed due to a compiler bug where the compiler chose the wrong function to call.
+    //
+    // Repro case: http://cl.ly/3S0a1T0Q0S1D
+    // rdar://17412596, OpenRadar: http://www.openradar.me/radar?id=5275533159956480
     
     /// Builds a constraint by relating the item to another item.
     func relateTo(right: ALOperand, relation: NSLayoutRelation) -> NSLayoutConstraint {
@@ -116,12 +129,6 @@ extension UIView {
     func al_operand(attribute: NSLayoutAttribute) -> ALOperand {
         return ALOperand(view: self, attribute: attribute)
     }
-    
-    //
-    // These have to be functions rather than properties because as of Xcode 6 beta 2, there
-    // is a compiler bug that causes a segfault when calling a property getter defined on
-    // a class extension. Repro case: https://gist.github.com/indragiek/0b163d8a1d998aa44ff6
-    //
     
     /// Equivalent to NSLayoutAttribute.Left
     var al_left: ALOperand {
