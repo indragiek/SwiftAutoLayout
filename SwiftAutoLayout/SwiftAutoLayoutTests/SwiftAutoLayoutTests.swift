@@ -50,7 +50,7 @@ class SwiftAutoLayoutTests: XCTestCase {
     
     func testEqual() {
         let equal = view1.al_left.equalTo(view2.al_right)
-        XCTAssertEqual(equal.relation, NSLayoutRelation.Equal, "Expect ALOperand.equalTo to produce constraint with NSLayoutRelation.Equal relation")
+        XCTAssertEqual(equal.relation, NSLayoutRelation.Equal, "Expect ALLayoutItem.equalTo to produce constraint with NSLayoutRelation.Equal relation")
         
         let equalOperator = view1.al_left == view2.al_right;
         XCTAssertEqual(equalOperator.relation, NSLayoutRelation.Equal, "Expect == operator to produce constraint with NSLayoutRelation.Equal relation")
@@ -58,7 +58,7 @@ class SwiftAutoLayoutTests: XCTestCase {
     
     func testGreaterThanOrEqual() {
         let gte = view1.al_left.greaterThanOrEqualTo(view2.al_right)
-        XCTAssertEqual(gte.relation, NSLayoutRelation.GreaterThanOrEqual, "Expect ALOperand.greaterThanOrEqualTo to produce constraint with NSLayoutRelation.GreaterThanOrEqual relation")
+        XCTAssertEqual(gte.relation, NSLayoutRelation.GreaterThanOrEqual, "Expect ALLayoutItem.greaterThanOrEqualTo to produce constraint with NSLayoutRelation.GreaterThanOrEqual relation")
         
         let gteOperator = view1.al_left >= view2.al_right;
         XCTAssertEqual(gteOperator.relation, NSLayoutRelation.GreaterThanOrEqual, "Expect >= operator to produce constraint with NSLayoutRelation.GreaterThanOrEqual relation")
@@ -66,7 +66,7 @@ class SwiftAutoLayoutTests: XCTestCase {
     
     func testLessThanOrEqual() {
         let lte = view1.al_left.lessThanOrEqualTo(view2.al_right)
-        XCTAssertEqual(lte.relation, NSLayoutRelation.LessThanOrEqual, "Expect ALOperand.lessThanOrEqualTo to produce constraint with NSLayoutRelation.LessThanOrEqual relation")
+        XCTAssertEqual(lte.relation, NSLayoutRelation.LessThanOrEqual, "Expect ALLayoutItem.lessThanOrEqualTo to produce constraint with NSLayoutRelation.LessThanOrEqual relation")
         
         let lteOperator = view1.al_left <= view2.al_right;
         XCTAssertEqual(lteOperator.relation, NSLayoutRelation.LessThanOrEqual, "Expect <= operator to produce constraint with NSLayoutRelation.LessThanOrEqual relation")
