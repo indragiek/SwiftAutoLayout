@@ -45,10 +45,6 @@ let constraint = view1.al_left.equalTo(view2.al_right * 2.0 + 10.0))
 
 As a sidenote, this is my first open-source Swift project! I had a lot of fun building this and am super excited about the future of the language, especially once the glaring compiler issues have been sorted out.
 
-### Todo
-
-* Support for OS X
-
 ### Contact
 
 * Indragie Karunaratne
