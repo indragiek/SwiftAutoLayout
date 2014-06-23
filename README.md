@@ -4,7 +4,7 @@ SwiftAutoLayout is a very small DSL for Autolayout, intended to provide a more d
 
 ```swift
 // this:
-let constraint = view1.al_left() == view2.al_right() * 2.0 + 10.0
+let constraint = view1.al_left == view2.al_right * 2.0 + 10.0
 		
 // is equivalent to:
 let constraint = NSLayoutConstraint(item: view1, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: view2, attribute: NSLayoutAttribute.Right, multiplier: 2.0, constant: 10.0)
@@ -20,9 +20,7 @@ SwiftAutolayout allows you to more effectively communicate the intent of a const
 
 ### Attributes
 
-Layout attributes are defined as functions added in an extension of `UIView`. For example, `UIView.al_width()` and `UIView.al_height()` represent `NSLayoutAttribute.Width` and `NSLayoutAttribute.Height`, respectively. 
-
-But why functions instead of properties? Properties would make for cleaner syntax, but functions had to be used because there is a bug as of Xcode 6 beta 2 that [causes the Swift compiler to segfault](https://gist.github.com/indragiek/0b163d8a1d998aa44ff6) when calling computed properties defined on class extensions.
+Layout attributes are defined as properties added in an extension of `UIView`. For example, `UIView.al_width` and `UIView.al_height` represent `NSLayoutAttribute.Width` and `NSLayoutAttribute.Height`, respectively. 
 
 ### Relations
 
@@ -32,10 +30,10 @@ If you think I'm crazy for overloading operators like `==` (even though it doesn
 
 ```swift
 // this:
-let constraint = view1.al_left() == view2.al_right() * 2.0 + 10.0
+let constraint = view1.al_left == view2.al_right * 2.0 + 10.0
 		
 // is equivalent to:
-let constraint = view1.al_left().equalTo(view2.al_right() * 2.0 + 10.0))
+let constraint = view1.al_left.equalTo(view2.al_right * 2.0 + 10.0))
 ```
 `equalTo()`, `greaterThanOrEqualTo()`, and `lessThanOrEqualTo()` are equivalent to `==`, `>=`, and `<=`, respectively.
 
