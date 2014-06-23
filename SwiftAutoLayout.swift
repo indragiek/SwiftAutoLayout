@@ -3,17 +3,44 @@
 
 import UIKit
 
-struct ALOperand {
+// Using class instead of a struct temporarily to work around a compiler bug when
+// defining computed properties on class extensions that return types that are
+// not bridgable to Objective-C (e.g. structs).
+//
+// Repro case: https://gist.github.com/indragiek/0b163d8a1d998aa44ff6
+// rdar://17409615, OpenRadar: http://www.openradar.me/radar?id=4588084989526016
+@objc class ALOperand {
     let view: UIView
     let attribute: NSLayoutAttribute
-    let multiplier: CGFloat
-    let constant: CGFloat
+    let multiplier: CGFloat = 1.0
+    let constant: CGFloat = 0.0
     
+    init (view: UIView, attribute: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat) {
+        self.view = view
+        self.attribute = attribute
+        self.multiplier = multiplier
+        self.constant = constant
+    }
+    
+    init (view: UIView, attribute: NSLayoutAttribute) {
+        self.view = view
+        self.attribute = attribute
+    }
+    
+    // relateTo(), equalTo(), greaterThanOrEqualTo(), and lessThanOrEqualTo() used to be overloaded functions
+    // instead of having two separately named functions (e.g. relateTo() and relateToConstant()) but they had
+    // to be renamed due to a compiler bug where the compiler chose the wrong function to call.
+    //
+    // Repro case: http://cl.ly/3S0a1T0Q0S1D
+    // rdar://17412596, OpenRadar: http://www.openradar.me/radar?id=5275533159956480
+    
+    /// Builds a constraint by relating the item to another item.
     func relateTo(right: ALOperand, relation: NSLayoutRelation) -> NSLayoutConstraint {
         return NSLayoutConstraint(item: view, attribute: attribute, relatedBy: relation, toItem: right.view, attribute: right.attribute, multiplier: right.multiplier, constant: right.constant)
     }
     
-    func relateTo(right: CGFloat, relation: NSLayoutRelation) -> NSLayoutConstraint {
+    /// Builds a constraint by relating the item to a constant value.
+    func relateToConstant(right: CGFloat, relation: NSLayoutRelation) -> NSLayoutConstraint {
         return NSLayoutConstraint(item: view, attribute: attribute, relatedBy: relation, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: right)
     }
     
@@ -23,8 +50,8 @@ struct ALOperand {
     }
     
     /// Equivalent to NSLayoutRelation.Equal
-    func equalTo(right: CGFloat) -> NSLayoutConstraint {
-        return relateTo(right, relation: .Equal)
+    func equalToConstant(right: CGFloat) -> NSLayoutConstraint {
+        return relateToConstant(right, relation: .Equal)
     }
     
     /// Equivalent to NSLayoutRelation.GreaterThanOrEqual
@@ -33,8 +60,8 @@ struct ALOperand {
     }
     
     /// Equivalent to NSLayoutRelation.GreaterThanOrEqual
-    func greaterThanOrEqualTo(right: CGFloat) -> NSLayoutConstraint {
-        return relateTo(right, relation: .GreaterThanOrEqual)
+    func greaterThanOrEqualToConstant(right: CGFloat) -> NSLayoutConstraint {
+        return relateToConstant(right, relation: .GreaterThanOrEqual)
     }
     
     /// Equivalent to NSLayoutRelation.LessThanOrEqual
@@ -43,8 +70,8 @@ struct ALOperand {
     }
     
     /// Equivalent to NSLayoutRelation.LessThanOrEqual
-    func lessThanOrEqualTo(right: CGFloat) -> NSLayoutConstraint {
-        return relateTo(right, relation: .LessThanOrEqual)
+    func lessThanOrEqualToConstant(right: CGFloat) -> NSLayoutConstraint {
+        return relateToConstant(right, relation: .LessThanOrEqual)
     }
 }
 
@@ -75,7 +102,7 @@ struct ALOperand {
 
 /// Equivalent to NSLayoutRelation.Equal
 @infix func == (left: ALOperand, right: CGFloat) -> NSLayoutConstraint {
-    return left.equalTo(right)
+    return left.equalToConstant(right)
 }
 
 /// Equivalent to NSLayoutRelation.GreaterThanOrEqual
@@ -85,7 +112,7 @@ struct ALOperand {
 
 /// Equivalent to NSLayoutRelation.GreaterThanOrEqual
 @infix func >= (left: ALOperand, right: CGFloat) -> NSLayoutConstraint {
-    return left.greaterThanOrEqualTo(right)
+    return left.greaterThanOrEqualToConstant(right)
 }
 
 /// Equivalent to NSLayoutRelation.LessThanOrEqual
@@ -95,72 +122,66 @@ struct ALOperand {
 
 /// Equivalent to NSLayoutRelation.LessThanOrEqual
 @infix func <= (left: ALOperand, right: CGFloat) -> NSLayoutConstraint {
-    return left.lessThanOrEqualTo(right)
+    return left.lessThanOrEqualToConstant(right)
 }
 
 extension UIView {
     func al_operand(attribute: NSLayoutAttribute) -> ALOperand {
-        return ALOperand(view: self, attribute: attribute, multiplier: 1.0, constant: 0.0)
+        return ALOperand(view: self, attribute: attribute)
     }
     
-    //
-    // These have to be functions rather than properties because as of Xcode 6 beta 2, there
-    // is a compiler bug that causes a segfault when calling a property getter defined on
-    // a class extension. Repro case: https://gist.github.com/indragiek/0b163d8a1d998aa44ff6
-    //
-    
     /// Equivalent to NSLayoutAttribute.Left
-    func al_left() -> ALOperand {
+    var al_left: ALOperand {
         return al_operand(.Left)
     }
     
     /// Equivalent to NSLayoutAttribute.Right
-    func al_right() -> ALOperand {
+    var al_right: ALOperand {
         return al_operand(.Right)
     }
     
     /// Equivalent to NSLayoutAttribute.Top
-    func al_top() -> ALOperand {
+    var al_top: ALOperand {
         return al_operand(.Top)
     }
     
     /// Equivalent to NSLayoutAttribute.Bottom
-    func al_bottom() -> ALOperand {
+    var al_bottom: ALOperand {
         return al_operand(.Bottom)
     }
     
     /// Equivalent to NSLayoutAttribute.Leading
-    func al_leading() -> ALOperand {
+    var al_leading: ALOperand {
         return al_operand(.Leading)
     }
     
     /// Equivalent to NSLayoutAttribute.Trailing
-    func al_trailing() -> ALOperand {
+    var al_trailing: ALOperand {
         return al_operand(.Trailing)
     }
     
     /// Equivalent to NSLayoutAttribute.Width
-    func al_width() -> ALOperand {
+    var al_width: ALOperand {
         return al_operand(.Width)
     }
     
     /// Equivalent to NSLayoutAttribute.Height
-    func al_height() -> ALOperand {
+    var al_height: ALOperand {
         return al_operand(.Height)
     }
     
     /// Equivalent to NSLayoutAttribute.CenterX
-    func al_centerX() -> ALOperand {
+    var al_centerX: ALOperand {
         return al_operand(.CenterX)
     }
     
     /// Equivalent to NSLayoutAttribute.CenterY
-    func al_centerY() -> ALOperand {
+    var al_centerY: ALOperand {
         return al_operand(.CenterY)
     }
     
     /// Equivalent to NSLayoutAttribute.Baseline
-    func al_baseline() -> ALOperand {
+    var al_baseline: ALOperand {
         return al_operand(.Baseline)
     }
 }
