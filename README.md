@@ -41,10 +41,10 @@ let constraint = view1.al_left().equalTo(view2.al_right() * 2.0 + 10.0))
 
 ### Priorities
 
-The priority of a constraint can be set using the `!!` operator:
+The priority of a constraint can be set using the `!` operator:
 
 ```swift
-let constraint = view1.al_left() == view2.al_right() * 2.0 + 10.0 !! 500
+let constraint = view1.al_left() == view2.al_right() * 2.0 + 10.0  ! 500
 ```
 
 ### Tests?
