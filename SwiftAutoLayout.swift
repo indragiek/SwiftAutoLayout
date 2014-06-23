@@ -6,10 +6,9 @@ import UIKit
 @objc class ALOperand {
     let view: UIView
     let attribute: NSLayoutAttribute
-    let multiplier: CGFloat
-    let constant: CGFloat
+    let multiplier: CGFloat = 1.0
+    let constant: CGFloat = 0.0
     
-    /// Designated initializer
     init (view: UIView, attribute: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat) {
         self.view = view
         self.attribute = attribute
@@ -17,11 +16,18 @@ import UIKit
         self.constant = constant
     }
     
+    init (view: UIView, attribute: NSLayoutAttribute) {
+        self.view = view
+        self.attribute = attribute
+    }
+    
+    /// Builds a constraint by relating the item to another item.
     func relateTo(right: ALOperand, relation: NSLayoutRelation) -> NSLayoutConstraint {
         return NSLayoutConstraint(item: view, attribute: attribute, relatedBy: relation, toItem: right.view, attribute: right.attribute, multiplier: right.multiplier, constant: right.constant)
     }
     
-    func relateTo(right: CGFloat, relation: NSLayoutRelation) -> NSLayoutConstraint {
+    /// Builds a constraint by relating the item to a constant value.
+    func relateToConstant(right: CGFloat, relation: NSLayoutRelation) -> NSLayoutConstraint {
         return NSLayoutConstraint(item: view, attribute: attribute, relatedBy: relation, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: right)
     }
     
@@ -31,8 +37,8 @@ import UIKit
     }
     
     /// Equivalent to NSLayoutRelation.Equal
-    func equalTo(right: CGFloat) -> NSLayoutConstraint {
-        return relateTo(right, relation: .Equal)
+    func equalToConstant(right: CGFloat) -> NSLayoutConstraint {
+        return relateToConstant(right, relation: .Equal)
     }
     
     /// Equivalent to NSLayoutRelation.GreaterThanOrEqual
@@ -41,8 +47,8 @@ import UIKit
     }
     
     /// Equivalent to NSLayoutRelation.GreaterThanOrEqual
-    func greaterThanOrEqualTo(right: CGFloat) -> NSLayoutConstraint {
-        return relateTo(right, relation: .GreaterThanOrEqual)
+    func greaterThanOrEqualToConstant(right: CGFloat) -> NSLayoutConstraint {
+        return relateToConstant(right, relation: .GreaterThanOrEqual)
     }
     
     /// Equivalent to NSLayoutRelation.LessThanOrEqual
@@ -51,8 +57,8 @@ import UIKit
     }
     
     /// Equivalent to NSLayoutRelation.LessThanOrEqual
-    func lessThanOrEqualTo(right: CGFloat) -> NSLayoutConstraint {
-        return relateTo(right, relation: .LessThanOrEqual)
+    func lessThanOrEqualToConstant(right: CGFloat) -> NSLayoutConstraint {
+        return relateToConstant(right, relation: .LessThanOrEqual)
     }
 }
 
@@ -83,7 +89,7 @@ import UIKit
 
 /// Equivalent to NSLayoutRelation.Equal
 @infix func == (left: ALOperand, right: CGFloat) -> NSLayoutConstraint {
-    return left.equalTo(right)
+    return left.equalToConstant(right)
 }
 
 /// Equivalent to NSLayoutRelation.GreaterThanOrEqual
@@ -93,7 +99,7 @@ import UIKit
 
 /// Equivalent to NSLayoutRelation.GreaterThanOrEqual
 @infix func >= (left: ALOperand, right: CGFloat) -> NSLayoutConstraint {
-    return left.greaterThanOrEqualTo(right)
+    return left.greaterThanOrEqualToConstant(right)
 }
 
 /// Equivalent to NSLayoutRelation.LessThanOrEqual
@@ -103,12 +109,12 @@ import UIKit
 
 /// Equivalent to NSLayoutRelation.LessThanOrEqual
 @infix func <= (left: ALOperand, right: CGFloat) -> NSLayoutConstraint {
-    return left.lessThanOrEqualTo(right)
+    return left.lessThanOrEqualToConstant(right)
 }
 
 extension UIView {
     func al_operand(attribute: NSLayoutAttribute) -> ALOperand {
-        return ALOperand(view: self, attribute: attribute, multiplier: 1.0, constant: 0.0)
+        return ALOperand(view: self, attribute: attribute)
     }
     
     //
