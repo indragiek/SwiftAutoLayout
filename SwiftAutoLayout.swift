@@ -1,7 +1,13 @@
 //  Copyright (c) 2014 Indragie Karunaratne. All rights reserved.
 //  Licensed under the MIT license, see LICENSE file for more info.
 
-import UIKit
+#if os(OSX)
+    import AppKit
+    typealias ALView = NSView
+#elseif os(iOS)
+    import UIKit
+    typealias ALView = UIView
+#endif
 
 // Using class instead of a struct temporarily to work around a compiler bug when
 // defining computed properties on class extensions that return types that are
@@ -10,19 +16,19 @@ import UIKit
 // Repro case: https://gist.github.com/indragiek/0b163d8a1d998aa44ff6
 // rdar://17409615, OpenRadar: http://www.openradar.me/radar?id=4588084989526016
 @objc class ALLayoutItem {
-    let view: UIView
+    let view: ALView
     let attribute: NSLayoutAttribute
     let multiplier: CGFloat = 1.0
     let constant: CGFloat = 0.0
     
-    init (view: UIView, attribute: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat) {
+    init (view: ALView, attribute: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat) {
         self.view = view
         self.attribute = attribute
         self.multiplier = multiplier
         self.constant = constant
     }
     
-    init (view: UIView, attribute: NSLayoutAttribute) {
+    init (view: ALView, attribute: NSLayoutAttribute) {
         self.view = view
         self.attribute = attribute
     }
@@ -125,7 +131,7 @@ import UIKit
     return left.lessThanOrEqualToConstant(right)
 }
 
-extension UIView {
+extension ALView {
     func al_operand(attribute: NSLayoutAttribute) -> ALLayoutItem {
         return ALLayoutItem(view: self, attribute: attribute)
     }

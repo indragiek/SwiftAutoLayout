@@ -7,25 +7,32 @@
 //
 
 import XCTest
-import UIKit
 import SwiftAutoLayout
 
+// The imports from SwiftAutoLayout don't cascade here
+#if os(OSX)
+    import AppKit
+#elseif os(iOS)
+    import UIKit
+#endif
+
+
 class SwiftAutoLayoutTests: XCTestCase {
-    let view1 = UIView(frame: CGRectZero)
-    let view2 = UIView(frame: CGRectZero)
+    let view1 = ALView(frame: CGRectZero)
+    let view2 = ALView(frame: CGRectZero)
     
     func testAttributeValues() {
-        XCTAssertEqual(view1.al_left.attribute, NSLayoutAttribute.Left, "Expect UIView.al_left to have the attribute NSLayoutAttribute.Left")
-        XCTAssertEqual(view1.al_right.attribute, NSLayoutAttribute.Right, "Expect UIView.al_right to have the attribute NSLayoutAttribute.Right")
-        XCTAssertEqual(view1.al_top.attribute, NSLayoutAttribute.Top, "Expect UIView.al_top to have the attribute NSLayoutAttribute.Top")
-        XCTAssertEqual(view1.al_bottom.attribute, NSLayoutAttribute.Bottom, "Expect UIView.al_bottom to have the attribute NSLayoutAttribute.Bottom")
-        XCTAssertEqual(view1.al_leading.attribute, NSLayoutAttribute.Leading, "Expect UIView.al_leading to have the attribute NSLayoutAttribute.Leading")
-        XCTAssertEqual(view1.al_trailing.attribute, NSLayoutAttribute.Trailing, "Expect UIView.al_trailing to have the attribute NSLayoutAttribute.Trailing")
-        XCTAssertEqual(view1.al_width.attribute, NSLayoutAttribute.Width, "Expect UIView.al_width to have the attribute NSLayoutAttribute.Width")
-        XCTAssertEqual(view1.al_height.attribute, NSLayoutAttribute.Height, "Expect UIView.al_height to have the attribute NSLayoutAttribute.Height")
-        XCTAssertEqual(view1.al_centerX.attribute, NSLayoutAttribute.CenterX, "Expect UIView.al_centerX to have the attribute NSLayoutAttribute.CenterX")
-        XCTAssertEqual(view1.al_centerY.attribute, NSLayoutAttribute.CenterY, "Expect UIView.al_centerY to have the attribute NSLayoutAttribute.CenterY")
-        XCTAssertEqual(view1.al_baseline.attribute, NSLayoutAttribute.Baseline, "Expect UIView.al_baseline to have the attribute NSLayoutAttribute.Baseline")
+        XCTAssertEqual(view1.al_left.attribute, NSLayoutAttribute.Left, "Expect ALView.al_left to have the attribute NSLayoutAttribute.Left")
+        XCTAssertEqual(view1.al_right.attribute, NSLayoutAttribute.Right, "Expect ALView.al_right to have the attribute NSLayoutAttribute.Right")
+        XCTAssertEqual(view1.al_top.attribute, NSLayoutAttribute.Top, "Expect ALView.al_top to have the attribute NSLayoutAttribute.Top")
+        XCTAssertEqual(view1.al_bottom.attribute, NSLayoutAttribute.Bottom, "Expect ALView.al_bottom to have the attribute NSLayoutAttribute.Bottom")
+        XCTAssertEqual(view1.al_leading.attribute, NSLayoutAttribute.Leading, "Expect ALView.al_leading to have the attribute NSLayoutAttribute.Leading")
+        XCTAssertEqual(view1.al_trailing.attribute, NSLayoutAttribute.Trailing, "Expect ALView.al_trailing to have the attribute NSLayoutAttribute.Trailing")
+        XCTAssertEqual(view1.al_width.attribute, NSLayoutAttribute.Width, "Expect ALView.al_width to have the attribute NSLayoutAttribute.Width")
+        XCTAssertEqual(view1.al_height.attribute, NSLayoutAttribute.Height, "Expect ALView.al_height to have the attribute NSLayoutAttribute.Height")
+        XCTAssertEqual(view1.al_centerX.attribute, NSLayoutAttribute.CenterX, "Expect ALView.al_centerX to have the attribute NSLayoutAttribute.CenterX")
+        XCTAssertEqual(view1.al_centerY.attribute, NSLayoutAttribute.CenterY, "Expect ALView.al_centerY to have the attribute NSLayoutAttribute.CenterY")
+        XCTAssertEqual(view1.al_baseline.attribute, NSLayoutAttribute.Baseline, "Expect ALView.al_baseline to have the attribute NSLayoutAttribute.Baseline")
     }
     
     func testOperandDefaultValues() {
@@ -94,10 +101,10 @@ class SwiftAutoLayoutTests: XCTestCase {
     
     func testCompleteConstraint() {
         let constraint = view1.al_left == view2.al_right * 2.0 / 0.5 + 20.0 - 10.0
-        XCTAssertEqualObjects(constraint.firstItem as UIView, view1, "Expect first item to be view1")
+        XCTAssertEqualObjects(constraint.firstItem as ALView, view1, "Expect first item to be view1")
         XCTAssertEqual(constraint.firstAttribute, NSLayoutAttribute.Left, "Expect first attribute to be NSLayoutAttribute.Left")
         XCTAssertEqual(constraint.relation, NSLayoutRelation.Equal, "Expect constraint relation to be NSLayoutRelation.Equal")
-        XCTAssertEqualObjects(constraint.secondItem as UIView, view2, "Expect second item to be view2")
+        XCTAssertEqualObjects(constraint.secondItem as ALView, view2, "Expect second item to be view2")
         XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.Right, "Expect second attribute to be NSLayoutAttribute.Right")
         XCTAssertEqual(constraint.constant, 10.0, "Expect constraint constant to be 10.0")
         XCTAssertEqual(constraint.multiplier, 4.0, "Expect constraint multiplier to be 4.0")
