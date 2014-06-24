@@ -11,6 +11,12 @@
 		72E1289C19514BDE00FF58A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72E1289B19514BDE00FF58A8 /* Images.xcassets */; };
 		72E128A819514BDE00FF58A8 /* SwiftAutoLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E128A719514BDE00FF58A8 /* SwiftAutoLayoutTests.swift */; };
 		72E128B219514C3400FF58A8 /* SwiftAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E128B119514C3400FF58A8 /* SwiftAutoLayout.swift */; };
+		A352491D19597E060054D9D0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A352491C19597E060054D9D0 /* main.swift */; };
+		A352491F19597E060054D9D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A352491E19597E060054D9D0 /* AppDelegate.swift */; };
+		A352492119597E060054D9D0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A352492019597E060054D9D0 /* Images.xcassets */; };
+		A352492419597E060054D9D0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A352492219597E060054D9D0 /* MainMenu.xib */; };
+		A352493719597E740054D9D0 /* SwiftAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E128B119514C3400FF58A8 /* SwiftAutoLayout.swift */; };
+		A352493819597E810054D9D0 /* SwiftAutoLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E128A719514BDE00FF58A8 /* SwiftAutoLayoutTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -20,6 +26,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 72E1289319514BDE00FF58A8;
 			remoteInfo = SwiftAutoLayout;
+		};
+		A352492A19597E060054D9D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72E1288C19514BDE00FF58A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A352491719597E060054D9D0;
+			remoteInfo = "SwiftAutoLayout-OSX";
+		};
+		A352493B195984C70054D9D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72E1288C19514BDE00FF58A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72E1289319514BDE00FF58A8;
+			remoteInfo = SwiftAutoLayout;
+		};
+		A352493D195984CA0054D9D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72E1288C19514BDE00FF58A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A352491719597E060054D9D0;
+			remoteInfo = "SwiftAutoLayout-OSX";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -32,6 +59,14 @@
 		72E128A619514BDE00FF58A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72E128A719514BDE00FF58A8 /* SwiftAutoLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftAutoLayoutTests.swift; sourceTree = "<group>"; };
 		72E128B119514C3400FF58A8 /* SwiftAutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftAutoLayout.swift; path = ../../SwiftAutoLayout.swift; sourceTree = "<group>"; };
+		A352491819597E060054D9D0 /* SwiftAutoLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftAutoLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A352491B19597E060054D9D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A352491C19597E060054D9D0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		A352491E19597E060054D9D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A352492019597E060054D9D0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A352492319597E060054D9D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		A352492919597E060054D9D0 /* SwiftAutoLayoutTests-OSX.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftAutoLayoutTests-OSX.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A352492E19597E070054D9D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +84,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A352491519597E060054D9D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A352492619597E060054D9D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -57,6 +106,8 @@
 			children = (
 				72E1289619514BDE00FF58A8 /* SwiftAutoLayout */,
 				72E128A419514BDE00FF58A8 /* SwiftAutoLayoutTests */,
+				A352491919597E060054D9D0 /* SwiftAutoLayout-OSX */,
+				A352492C19597E060054D9D0 /* SwiftAutoLayoutTests-OSX */,
 				72E1289519514BDE00FF58A8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,6 +117,8 @@
 			children = (
 				72E1289419514BDE00FF58A8 /* SwiftAutoLayout.app */,
 				72E128A119514BDE00FF58A8 /* SwiftAutoLayoutTests.xctest */,
+				A352491819597E060054D9D0 /* SwiftAutoLayout.app */,
+				A352492919597E060054D9D0 /* SwiftAutoLayoutTests-OSX.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -106,6 +159,42 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A352491919597E060054D9D0 /* SwiftAutoLayout-OSX */ = {
+			isa = PBXGroup;
+			children = (
+				A352491E19597E060054D9D0 /* AppDelegate.swift */,
+				A352492019597E060054D9D0 /* Images.xcassets */,
+				A352492219597E060054D9D0 /* MainMenu.xib */,
+				A352491A19597E060054D9D0 /* Supporting Files */,
+			);
+			path = "SwiftAutoLayout-OSX";
+			sourceTree = "<group>";
+		};
+		A352491A19597E060054D9D0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A352491B19597E060054D9D0 /* Info.plist */,
+				A352491C19597E060054D9D0 /* main.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A352492C19597E060054D9D0 /* SwiftAutoLayoutTests-OSX */ = {
+			isa = PBXGroup;
+			children = (
+				A352492D19597E060054D9D0 /* Supporting Files */,
+			);
+			path = "SwiftAutoLayoutTests-OSX";
+			sourceTree = "<group>";
+		};
+		A352492D19597E060054D9D0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A352492E19597E070054D9D0 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,10 +227,47 @@
 			);
 			dependencies = (
 				72E128A319514BDE00FF58A8 /* PBXTargetDependency */,
+				A352493C195984C70054D9D0 /* PBXTargetDependency */,
 			);
 			name = SwiftAutoLayoutTests;
 			productName = SwiftAutoLayoutTests;
 			productReference = 72E128A119514BDE00FF58A8 /* SwiftAutoLayoutTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A352491719597E060054D9D0 /* SwiftAutoLayout-OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A352493519597E070054D9D0 /* Build configuration list for PBXNativeTarget "SwiftAutoLayout-OSX" */;
+			buildPhases = (
+				A352491419597E060054D9D0 /* Sources */,
+				A352491519597E060054D9D0 /* Frameworks */,
+				A352491619597E060054D9D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SwiftAutoLayout-OSX";
+			productName = "SwiftAutoLayout-OSX";
+			productReference = A352491819597E060054D9D0 /* SwiftAutoLayout.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A352492819597E060054D9D0 /* SwiftAutoLayoutTests-OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A352493619597E070054D9D0 /* Build configuration list for PBXNativeTarget "SwiftAutoLayoutTests-OSX" */;
+			buildPhases = (
+				A352492519597E060054D9D0 /* Sources */,
+				A352492619597E060054D9D0 /* Frameworks */,
+				A352492719597E060054D9D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A352492B19597E060054D9D0 /* PBXTargetDependency */,
+				A352493E195984CA0054D9D0 /* PBXTargetDependency */,
+			);
+			name = "SwiftAutoLayoutTests-OSX";
+			productName = "SwiftAutoLayoutTests-OSX";
+			productReference = A352492919597E060054D9D0 /* SwiftAutoLayoutTests-OSX.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -160,6 +286,13 @@
 						CreatedOnToolsVersion = 6.0;
 						TestTargetID = 72E1289319514BDE00FF58A8;
 					};
+					A352491719597E060054D9D0 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					A352492819597E060054D9D0 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = A352491719597E060054D9D0;
+					};
 				};
 			};
 			buildConfigurationList = 72E1288F19514BDE00FF58A8 /* Build configuration list for PBXProject "SwiftAutoLayout" */;
@@ -168,6 +301,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 72E1288B19514BDE00FF58A8;
 			productRefGroup = 72E1289519514BDE00FF58A8 /* Products */;
@@ -176,6 +310,8 @@
 			targets = (
 				72E1289319514BDE00FF58A8 /* SwiftAutoLayout */,
 				72E128A019514BDE00FF58A8 /* SwiftAutoLayoutTests */,
+				A352491719597E060054D9D0 /* SwiftAutoLayout-OSX */,
+				A352492819597E060054D9D0 /* SwiftAutoLayoutTests-OSX */,
 			);
 		};
 /* End PBXProject section */
@@ -190,6 +326,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		72E1289F19514BDE00FF58A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A352491619597E060054D9D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A352492119597E060054D9D0 /* Images.xcassets in Resources */,
+				A352492419597E060054D9D0 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A352492719597E060054D9D0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -216,6 +368,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A352491419597E060054D9D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A352491F19597E060054D9D0 /* AppDelegate.swift in Sources */,
+				A352491D19597E060054D9D0 /* main.swift in Sources */,
+				A352493719597E740054D9D0 /* SwiftAutoLayout.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A352492519597E060054D9D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A352493819597E810054D9D0 /* SwiftAutoLayoutTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -224,7 +394,33 @@
 			target = 72E1289319514BDE00FF58A8 /* SwiftAutoLayout */;
 			targetProxy = 72E128A219514BDE00FF58A8 /* PBXContainerItemProxy */;
 		};
+		A352492B19597E060054D9D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A352491719597E060054D9D0 /* SwiftAutoLayout-OSX */;
+			targetProxy = A352492A19597E060054D9D0 /* PBXContainerItemProxy */;
+		};
+		A352493C195984C70054D9D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 72E1289319514BDE00FF58A8 /* SwiftAutoLayout */;
+			targetProxy = A352493B195984C70054D9D0 /* PBXContainerItemProxy */;
+		};
+		A352493E195984CA0054D9D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A352491719597E060054D9D0 /* SwiftAutoLayout-OSX */;
+			targetProxy = A352493D195984CA0054D9D0 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A352492219597E060054D9D0 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A352492319597E060054D9D0 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		72E128A919514BDE00FF58A8 /* Debug */ = {
@@ -362,6 +558,84 @@
 			};
 			name = Release;
 		};
+		A352493119597E070054D9D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SwiftAutoLayout-OSX/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftAutoLayout;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A352493219597E070054D9D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				INFOPLIST_FILE = "SwiftAutoLayout-OSX/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftAutoLayout;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A352493319597E070054D9D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SwiftAutoLayout.app/Contents/MacOS/SwiftAutoLayout";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SwiftAutoLayoutTests-OSX/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		A352493419597E070054D9D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SwiftAutoLayout.app/Contents/MacOS/SwiftAutoLayout";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SwiftAutoLayoutTests-OSX/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -388,6 +662,24 @@
 			buildConfigurations = (
 				72E128AF19514BDE00FF58A8 /* Debug */,
 				72E128B019514BDE00FF58A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A352493519597E070054D9D0 /* Build configuration list for PBXNativeTarget "SwiftAutoLayout-OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A352493119597E070054D9D0 /* Debug */,
+				A352493219597E070054D9D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A352493619597E070054D9D0 /* Build configuration list for PBXNativeTarget "SwiftAutoLayoutTests-OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A352493319597E070054D9D0 /* Debug */,
+				A352493419597E070054D9D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
