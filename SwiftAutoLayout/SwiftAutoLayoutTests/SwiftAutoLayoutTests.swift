@@ -49,7 +49,7 @@ class SwiftAutoLayoutTests: XCTestCase {
                         view1.al_baseline]
         
         for operand in operands {
-            XCTAssertEqualObjects(view1, operand.view, "Expect view to be correct")
+            XCTAssertEqual(view1, operand.view, "Expect view to be correct")
             XCTAssertEqual(operand.constant, 0.0, "Expect default constant to be 0.0")
             XCTAssertEqual(operand.multiplier, 1.0, "Expect default multiplier to be 1.0")
         }
@@ -101,10 +101,10 @@ class SwiftAutoLayoutTests: XCTestCase {
     
     func testCompleteConstraint() {
         let constraint = view1.al_left == view2.al_right * 2.0 / 0.5 + 20.0 - 10.0
-        XCTAssertEqualObjects(constraint.firstItem as ALView, view1, "Expect first item to be view1")
+        XCTAssertEqual(constraint.firstItem as ALView, view1, "Expect first item to be view1")
         XCTAssertEqual(constraint.firstAttribute, NSLayoutAttribute.Left, "Expect first attribute to be NSLayoutAttribute.Left")
         XCTAssertEqual(constraint.relation, NSLayoutRelation.Equal, "Expect constraint relation to be NSLayoutRelation.Equal")
-        XCTAssertEqualObjects(constraint.secondItem as ALView, view2, "Expect second item to be view2")
+        XCTAssertEqual(constraint.secondItem as ALView, view2, "Expect second item to be view2")
         XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.Right, "Expect second attribute to be NSLayoutAttribute.Right")
         XCTAssertEqual(constraint.constant, 10.0, "Expect constraint constant to be 10.0")
         XCTAssertEqual(constraint.multiplier, 4.0, "Expect constraint multiplier to be 4.0")
