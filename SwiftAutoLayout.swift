@@ -9,13 +9,7 @@
     public typealias ALView = UIView
 #endif
 
-// Using class instead of a struct temporarily to work around a compiler bug when
-// defining computed properties on class extensions that return types that are
-// not bridgable to Objective-C (e.g. structs).
-//
-// Repro case: https://gist.github.com/indragiek/0b163d8a1d998aa44ff6
-// rdar://17409615, OpenRadar: http://www.openradar.me/radar?id=4588084989526016
-@objc public class ALLayoutItem {
+public struct ALLayoutItem {
     public let view: ALView
     public let attribute: NSLayoutAttribute
     public let multiplier: CGFloat = 1.0
