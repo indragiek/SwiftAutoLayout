@@ -23,30 +23,49 @@ class SwiftAutoLayoutTests: XCTestCase {
     
     func testAttributeValues() {
         XCTAssertEqual(view1.al_left.attribute, NSLayoutAttribute.Left, "Expect ALView.al_left to have the attribute NSLayoutAttribute.Left")
+        XCTAssertEqual(view1.al_leftMargin.attribute, NSLayoutAttribute.LeftMargin, "Expect ALView.al_leftMargin to have the attribute NSLayoutAttribute.LeftMargin")
         XCTAssertEqual(view1.al_right.attribute, NSLayoutAttribute.Right, "Expect ALView.al_right to have the attribute NSLayoutAttribute.Right")
+        XCTAssertEqual(view1.al_rightMargin.attribute, NSLayoutAttribute.RightMargin, "Expect ALView.al_rightMargin to have the attribute NSLayoutAttribute.RightMargin")
         XCTAssertEqual(view1.al_top.attribute, NSLayoutAttribute.Top, "Expect ALView.al_top to have the attribute NSLayoutAttribute.Top")
+        XCTAssertEqual(view1.al_topMargin.attribute, NSLayoutAttribute.TopMargin, "Expect ALView.al_topMargin to have the attribute NSLayoutAttribute.TopMargin")
         XCTAssertEqual(view1.al_bottom.attribute, NSLayoutAttribute.Bottom, "Expect ALView.al_bottom to have the attribute NSLayoutAttribute.Bottom")
+        XCTAssertEqual(view1.al_bottomMargin.attribute, NSLayoutAttribute.BottomMargin, "Expect ALView.al_bottomMargin to have the attribute NSLayoutAttribute.BottomMargin")
         XCTAssertEqual(view1.al_leading.attribute, NSLayoutAttribute.Leading, "Expect ALView.al_leading to have the attribute NSLayoutAttribute.Leading")
+        XCTAssertEqual(view1.al_leadingMargin.attribute, NSLayoutAttribute.LeadingMargin, "Expect ALView.al_leadingMargin to have the attribute NSLayoutAttribute.LeadingMargin")
         XCTAssertEqual(view1.al_trailing.attribute, NSLayoutAttribute.Trailing, "Expect ALView.al_trailing to have the attribute NSLayoutAttribute.Trailing")
+        XCTAssertEqual(view1.al_trailingMargin.attribute, NSLayoutAttribute.TrailingMargin, "Expect ALView.al_trailingMargin to have the attribute NSLayoutAttribute.TrailingMargin")
         XCTAssertEqual(view1.al_width.attribute, NSLayoutAttribute.Width, "Expect ALView.al_width to have the attribute NSLayoutAttribute.Width")
         XCTAssertEqual(view1.al_height.attribute, NSLayoutAttribute.Height, "Expect ALView.al_height to have the attribute NSLayoutAttribute.Height")
         XCTAssertEqual(view1.al_centerX.attribute, NSLayoutAttribute.CenterX, "Expect ALView.al_centerX to have the attribute NSLayoutAttribute.CenterX")
+        XCTAssertEqual(view1.al_centerXWithinMargins.attribute, NSLayoutAttribute.CenterXWithinMargins, "Expect ALView.al_centerXWithinMargins to have the attribute NSLayoutAttribute.CenterXWithinMargins")
         XCTAssertEqual(view1.al_centerY.attribute, NSLayoutAttribute.CenterY, "Expect ALView.al_centerY to have the attribute NSLayoutAttribute.CenterY")
+        XCTAssertEqual(view1.al_centerYWithinMargins.attribute, NSLayoutAttribute.CenterYWithinMargins, "Expect ALView.al_centerYWithinMargins to have the attribute NSLayoutAttribute.CenterYWithinMargins")
         XCTAssertEqual(view1.al_baseline.attribute, NSLayoutAttribute.Baseline, "Expect ALView.al_baseline to have the attribute NSLayoutAttribute.Baseline")
+        XCTAssertEqual(view1.al_firstbaseline.attribute, NSLayoutAttribute.FirstBaseline, "Expect ALView.al_firstbaseline to have the attribute NSLayoutAttribute.FirstBaseline")
     }
     
     func testOperandDefaultValues() {
         let operands = [view1.al_left,
+                        view1.al_leftMargin,
                         view1.al_right,
+                        view1.al_rightMargin,
                         view1.al_top,
+                        view1.al_topMargin,
                         view1.al_bottom,
+                        view1.al_bottomMargin,
                         view1.al_leading,
+                        view1.al_leadingMargin,
                         view1.al_trailing,
+                        view1.al_trailingMargin,
                         view1.al_width,
                         view1.al_height,
                         view1.al_centerX,
+                        view1.al_centerXWithinMargins,
                         view1.al_centerY,
-                        view1.al_baseline]
+                        view1.al_centerYWithinMargins,
+                        view1.al_baseline,
+                        view1.al_firstbaseline
+        ]
         
         for operand in operands {
             XCTAssertEqual(view1, operand.view, "Expect view to be correct")
