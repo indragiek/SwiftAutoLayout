@@ -76,52 +76,52 @@ public struct ALLayoutItem {
 }
 
 /// Multiplies the operand's multiplier by the RHS value
-@infix public func * (left: ALLayoutItem, right: CGFloat) -> ALLayoutItem {
+public func * (left: ALLayoutItem, right: CGFloat) -> ALLayoutItem {
 	return ALLayoutItem(view: left.view, attribute: left.attribute, multiplier: left.multiplier * right, constant: left.constant)
 }
 
 /// Divides the operand's multiplier by the RHS value
-@infix public func / (left: ALLayoutItem, right: CGFloat) -> ALLayoutItem {
+public func / (left: ALLayoutItem, right: CGFloat) -> ALLayoutItem {
 	return ALLayoutItem(view: left.view, attribute: left.attribute, multiplier: left.multiplier / right, constant: left.constant)
 }
 
 /// Adds the RHS value to the operand's constant
-@infix public func + (left: ALLayoutItem, right: CGFloat) -> ALLayoutItem {
+public func + (left: ALLayoutItem, right: CGFloat) -> ALLayoutItem {
 	return ALLayoutItem(view: left.view, attribute: left.attribute, multiplier: left.multiplier, constant: left.constant + right)
 }
 
 /// Subtracts the RHS value from the operand's constant
-@infix public func - (left: ALLayoutItem, right: CGFloat) -> ALLayoutItem {
+public func - (left: ALLayoutItem, right: CGFloat) -> ALLayoutItem {
 	return ALLayoutItem(view: left.view, attribute: left.attribute, multiplier: left.multiplier, constant: left.constant - right)
 }
 
 /// Equivalent to NSLayoutRelation.Equal
-@infix public func == (left: ALLayoutItem, right: ALLayoutItem) -> NSLayoutConstraint {
+public func == (left: ALLayoutItem, right: ALLayoutItem) -> NSLayoutConstraint {
 	return left.equalTo(right)
 }
 
 /// Equivalent to NSLayoutRelation.Equal
-@infix public func == (left: ALLayoutItem, right: CGFloat) -> NSLayoutConstraint {
+public func == (left: ALLayoutItem, right: CGFloat) -> NSLayoutConstraint {
     return left.equalToConstant(right)
 }
 
 /// Equivalent to NSLayoutRelation.GreaterThanOrEqual
-@infix public func >= (left: ALLayoutItem, right: ALLayoutItem) -> NSLayoutConstraint {
+public func >= (left: ALLayoutItem, right: ALLayoutItem) -> NSLayoutConstraint {
 	return left.greaterThanOrEqualTo(right)
 }
 
 /// Equivalent to NSLayoutRelation.GreaterThanOrEqual
-@infix public func >= (left: ALLayoutItem, right: CGFloat) -> NSLayoutConstraint {
+public func >= (left: ALLayoutItem, right: CGFloat) -> NSLayoutConstraint {
     return left.greaterThanOrEqualToConstant(right)
 }
 
 /// Equivalent to NSLayoutRelation.LessThanOrEqual
-@infix public func <= (left: ALLayoutItem, right: ALLayoutItem) -> NSLayoutConstraint {
+public func <= (left: ALLayoutItem, right: ALLayoutItem) -> NSLayoutConstraint {
 	return left.lessThanOrEqualTo(right)
 }
 
 /// Equivalent to NSLayoutRelation.LessThanOrEqual
-@infix public func <= (left: ALLayoutItem, right: CGFloat) -> NSLayoutConstraint {
+public func <= (left: ALLayoutItem, right: CGFloat) -> NSLayoutConstraint {
     return left.lessThanOrEqualToConstant(right)
 }
 
