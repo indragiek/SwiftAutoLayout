@@ -135,9 +135,19 @@ public extension ALView {
         return al_operand(.Left)
     }
     
+    /// Equivalent to NSLayoutAttribute.LeftMargin
+    var al_leftMargin: ALLayoutItem {
+        return al_operand(.LeftMargin)
+    }
+    
     /// Equivalent to NSLayoutAttribute.Right
     var al_right: ALLayoutItem {
         return al_operand(.Right)
+    }
+    
+    /// Equivalent to NSLayoutAttribute.RightMargin
+    var al_rightMargin: ALLayoutItem {
+        return al_operand(.RightMargin)
     }
     
     /// Equivalent to NSLayoutAttribute.Top
@@ -145,9 +155,19 @@ public extension ALView {
         return al_operand(.Top)
     }
     
+    /// Equivalent to NSLayoutAttribute.TopMargin
+    var al_topMargin: ALLayoutItem {
+        return al_operand(.TopMargin)
+    }
+    
     /// Equivalent to NSLayoutAttribute.Bottom
     var al_bottom: ALLayoutItem {
         return al_operand(.Bottom)
+    }
+    
+    /// Equivalent to NSLayoutAttribute.BottomMargin
+    var al_bottomMargin: ALLayoutItem {
+        return al_operand(.BottomMargin)
     }
     
     /// Equivalent to NSLayoutAttribute.Leading
@@ -155,9 +175,19 @@ public extension ALView {
         return al_operand(.Leading)
     }
     
+    /// Equivalent to NSLayoutAttribute.LeadingMargin
+    var al_leadingMargin: ALLayoutItem {
+        return al_operand(.LeadingMargin)
+    }
+    
     /// Equivalent to NSLayoutAttribute.Trailing
     var al_trailing: ALLayoutItem {
         return al_operand(.Trailing)
+    }
+    
+    /// Equivalent to NSLayoutAttribute.TrailingMargin
+    var al_trailingMargin: ALLayoutItem {
+        return al_operand(.TrailingMargin)
     }
     
     /// Equivalent to NSLayoutAttribute.Width
@@ -175,13 +205,57 @@ public extension ALView {
         return al_operand(.CenterX)
     }
     
+    /// Equivalent to NSLayoutAttribute.CenterXWithinMargins
+    var al_centerXWithinMargins: ALLayoutItem {
+        return al_operand(.CenterXWithinMargins)
+    }
+    
     /// Equivalent to NSLayoutAttribute.CenterY
     var al_centerY: ALLayoutItem {
         return al_operand(.CenterY)
     }
     
+    /// Equivalent to NSLayoutAttribute.CenterYWithinMargins
+    var al_centerYWithinMargins: ALLayoutItem {
+        return al_operand(.CenterYWithinMargins)
+    }
+    
     /// Equivalent to NSLayoutAttribute.Baseline
     var al_baseline: ALLayoutItem {
         return al_operand(.Baseline)
+    }
+    
+    /// Equivalent to NSLayoutAttribute.FirstBaseline
+    var al_firstbaseline: ALLayoutItem {
+        return al_operand(.FirstBaseline)
+    }
+}
+
+extension NSLayoutConstraint {
+    func withPriority(priority: UILayoutPriority) -> NSLayoutConstraint {
+        self.priority = priority
+        return self
+    }
+    
+    // Using UILayoutPriority constants below causes compiler issue
+    func withDefaultLowPriority() -> NSLayoutConstraint {
+        return self.withPriority(250) // UILayoutPriorityDefaultLow
+    }
+    
+    func withDefaultHighPriority() -> NSLayoutConstraint {
+        return self.withPriority(750) // UILayoutPriorityDefaultHigh
+    }
+    
+    func withFittingSizeLevelPriority() -> NSLayoutConstraint {
+        return self.withPriority(50) // UILayoutPriorityFittingSizeLevel
+    }
+    
+    func withRequiredPriority() -> NSLayoutConstraint {
+        return self.withPriority(1000) // UILayoutPriorityRequired
+    }
+    
+    func addConstraintTo(view: ALView) -> NSLayoutConstraint {
+        view.addConstraint(self)
+        return self
     }
 }
