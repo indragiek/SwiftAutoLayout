@@ -50,8 +50,8 @@ class SwiftAutoLayoutTests: XCTestCase {
         
         for operand in operands {
             XCTAssertEqual(view1, operand.view, "Expect view to be correct")
-            XCTAssertEqual(operand.constant, 0.0, "Expect default constant to be 0.0")
-            XCTAssertEqual(operand.multiplier, 1.0, "Expect default multiplier to be 1.0")
+            XCTAssertEqual(operand.constant, CGFloat(0.0), "Expect default constant to be 0.0")
+            XCTAssertEqual(operand.multiplier, CGFloat(1.0), "Expect default multiplier to be 1.0")
         }
     }
     
@@ -81,22 +81,22 @@ class SwiftAutoLayoutTests: XCTestCase {
     
     func testAddition() {
         let constraint = view1.al_left == view2.al_right + 10.0
-        XCTAssertEqual(constraint.constant, 10.0, "Expect constraint constant to be 10.0")
+        XCTAssertEqual(constraint.constant, CGFloat(10.0), "Expect constraint constant to be 10.0")
     }
     
     func testSubtraction() {
         let constraint = view1.al_left == view2.al_right - 10.0
-        XCTAssertEqual(constraint.constant, -10.0, "Expect constraint constant to be -10.0")
+        XCTAssertEqual(constraint.constant, CGFloat(-10.0), "Expect constraint constant to be -10.0")
     }
     
     func testMultiplication() {
         let constraint = view1.al_left == view2.al_right * 2.0
-        XCTAssertEqual(constraint.multiplier, 2.0, "Expect constraint multiplier to be 2.0")
+        XCTAssertEqual(constraint.multiplier, CGFloat(2.0), "Expect constraint multiplier to be 2.0")
     }
     
     func testDivision() {
         let constraint = view1.al_left == view2.al_right / 2.0
-        XCTAssertEqual(constraint.multiplier, 0.5, "Expect constraint multiplier to be 0.5")
+        XCTAssertEqual(constraint.multiplier, CGFloat(0.5), "Expect constraint multiplier to be 0.5")
     }
     
     func testCompleteConstraint() {
@@ -106,14 +106,14 @@ class SwiftAutoLayoutTests: XCTestCase {
         XCTAssertEqual(constraint.relation, NSLayoutRelation.Equal, "Expect constraint relation to be NSLayoutRelation.Equal")
         XCTAssertEqual(constraint.secondItem as ALView, view2, "Expect second item to be view2")
         XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.Right, "Expect second attribute to be NSLayoutAttribute.Right")
-        XCTAssertEqual(constraint.constant, 10.0, "Expect constraint constant to be 10.0")
-        XCTAssertEqual(constraint.multiplier, 4.0, "Expect constraint multiplier to be 4.0")
+        XCTAssertEqual(constraint.constant, CGFloat(10.0), "Expect constraint constant to be 10.0")
+        XCTAssertEqual(constraint.multiplier, CGFloat(4.0), "Expect constraint multiplier to be 4.0")
     }
     
     func testConstantMultiplierOnWrongSide() {
         let constraint = view1.al_left * 2.0 / 0.5 + 20.0 - 10.0 == view2.al_right
-        XCTAssertEqual(constraint.constant, 0.0, "Expect constraint constant to be 0.0 when expression is on wrong side of the relation")
-        XCTAssertEqual(constraint.multiplier, 1.0, "Expect constraint multiplier to be 1.0 when expression is on wrong side of the relation")
+        XCTAssertEqual(constraint.constant, CGFloat(0.0), "Expect constraint constant to be 0.0 when expression is on wrong side of the relation")
+        XCTAssertEqual(constraint.multiplier, CGFloat(1.0), "Expect constraint multiplier to be 1.0 when expression is on wrong side of the relation")
     }
     
     func testRelationsWithoutSecondView() {
@@ -125,8 +125,8 @@ class SwiftAutoLayoutTests: XCTestCase {
                            view1.al_width.lessThanOrEqualToConstant(10.0 * 2.0)]
         
         for constraint in constraints {
-            XCTAssertEqual(constraint.constant, 20.0, "Expect constraint constant to be 20.0")
-            XCTAssertEqual(constraint.multiplier, 1.0, "Expect constraint multiplier to be 0.0")
+            XCTAssertEqual(constraint.constant, CGFloat(20.0), "Expect constraint constant to be 20.0")
+            XCTAssertEqual(constraint.multiplier, CGFloat(1.0), "Expect constraint multiplier to be 0.0")
         }
     }
 }
