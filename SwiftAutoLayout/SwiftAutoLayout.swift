@@ -12,19 +12,14 @@
 public struct ALLayoutItem {
     public let view: ALView
     public let attribute: NSLayoutAttribute
-    public let multiplier: CGFloat = 1.0
-    public let constant: CGFloat = 0.0
+    public let multiplier: CGFloat
+    public let constant: CGFloat
     
-    init (view: ALView, attribute: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat) {
+    init(view: ALView, attribute: NSLayoutAttribute, multiplier: CGFloat = 1.0, constant: CGFloat = 0.0) {
         self.view = view
         self.attribute = attribute
         self.multiplier = multiplier
         self.constant = constant
-    }
-    
-    init (view: ALView, attribute: NSLayoutAttribute) {
-        self.view = view
-        self.attribute = attribute
     }
     
     // relateTo(), equalTo(), greaterThanOrEqualTo(), and lessThanOrEqualTo() used to be overloaded functions
