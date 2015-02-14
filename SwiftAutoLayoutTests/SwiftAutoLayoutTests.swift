@@ -101,10 +101,10 @@ class SwiftAutoLayoutTests: XCTestCase {
     
     func testCompleteConstraint() {
         let constraint = view1.al_left == view2.al_right * 2.0 / 0.5 + 20.0 - 10.0
-        XCTAssertEqual(constraint.firstItem as ALView, view1, "Expect first item to be view1")
+        XCTAssertEqual(constraint.firstItem as! ALView, view1, "Expect first item to be view1")
         XCTAssertEqual(constraint.firstAttribute, NSLayoutAttribute.Left, "Expect first attribute to be NSLayoutAttribute.Left")
         XCTAssertEqual(constraint.relation, NSLayoutRelation.Equal, "Expect constraint relation to be NSLayoutRelation.Equal")
-        XCTAssertEqual(constraint.secondItem as ALView, view2, "Expect second item to be view2")
+        XCTAssertEqual(constraint.secondItem as! ALView, view2, "Expect second item to be view2")
         XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.Right, "Expect second attribute to be NSLayoutAttribute.Right")
         XCTAssertEqual(constraint.constant, CGFloat(10.0), "Expect constraint constant to be 10.0")
         XCTAssertEqual(constraint.multiplier, CGFloat(4.0), "Expect constraint multiplier to be 4.0")
@@ -117,12 +117,23 @@ class SwiftAutoLayoutTests: XCTestCase {
     }
     
     func testRelationsWithoutSecondView() {
-        let constraints = [view1.al_width == 10.0 * 2.0,
-                           view1.al_width.equalToConstant(10.0 * 2.0),
-                           view1.al_width >= 10.0 * 2.0,
-                           view1.al_width.greaterThanOrEqualToConstant(10.0 * 2.0),
-                           view1.al_width <= 10.0 * 2.0,
-                           view1.al_width.lessThanOrEqualToConstant(10.0 * 2.0)]
+        // Expressions had to be separated because Xcode 6.3b1 complains that
+        // the expression is too complex to resolve otherwise.
+        let eOperatorConstraint = view1.al_width == 10.0 * 2.0
+        let eMethodConstraint = view1.al_width.equalToConstant(10.0 * 2.0)
+        let gteOperatorConstraint = view1.al_width >= 10.0 * 2.0
+        let gteMethodConstraint = view1.al_width.greaterThanOrEqualToConstant(10.0 * 2.0)
+        let lteOperatorConstraint = view1.al_width <= 10.0 * 2.0
+        let lteMethodConstraint = view1.al_width.lessThanOrEqualToConstant(10.0 * 2.0)
+        
+        let constraints = [
+            eOperatorConstraint,
+            eMethodConstraint,
+            gteOperatorConstraint,
+            gteMethodConstraint,
+            lteOperatorConstraint,
+            lteMethodConstraint
+        ]
         
         for constraint in constraints {
             XCTAssertEqual(constraint.constant, CGFloat(20.0), "Expect constraint constant to be 20.0")
