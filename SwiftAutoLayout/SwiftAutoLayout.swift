@@ -1,182 +1,117 @@
-//  Copyright (c) 2014 Indragie Karunaratne. All rights reserved.
+//  Copyright (c) 2016 Indragie Karunaratne. All rights reserved.
 //  Licensed under the MIT license, see LICENSE file for more info.
 
 #if os(OSX)
     import AppKit
-    public typealias ALView = NSView
+    public typealias View = NSView
+    public typealias LayoutPriority = NSLayoutPriority
+    
+    @available(OSX 10.11, *)
+    public typealias LayoutGuide = NSLayoutGuide
 #elseif os(iOS)
     import UIKit
-    public typealias ALView = UIView
+    public typealias View = UIView
+    public typealias LayoutPriority = UILayoutPriority
+    
+    @available(iOS 9.0, *)
+    public typealias LayoutGuide = UILayoutGuide
 #endif
 
-public struct ALLayoutItem {
-    public let view: ALView
+public protocol LayoutRegion: AnyObject {}
+extension View: LayoutRegion {}
+
+@available(iOS 9.0, OSX 10.11, *)
+extension LayoutGuide: LayoutRegion {}
+
+public struct XAxis {}
+public struct YAxis {}
+public struct Dimension {}
+
+public struct LayoutItem<C> {
+    public let item: AnyObject
     public let attribute: NSLayoutAttribute
     public let multiplier: CGFloat
     public let constant: CGFloat
     
-    init(view: ALView, attribute: NSLayoutAttribute, multiplier: CGFloat = 1.0, constant: CGFloat = 0.0) {
-        self.view = view
-        self.attribute = attribute
-        self.multiplier = multiplier
-        self.constant = constant
+    private func constrain(secondItem: LayoutItem, relation: NSLayoutRelation) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: item, attribute: attribute, relatedBy: relation, toItem: secondItem.item, attribute: secondItem.attribute, multiplier: secondItem.multiplier, constant: secondItem.constant)
     }
     
-    // relateTo(), equalTo(), greaterThanOrEqualTo(), and lessThanOrEqualTo() used to be overloaded functions
-    // instead of having two separately named functions (e.g. relateTo() and relateToConstant()) but they had
-    // to be renamed due to a compiler bug where the compiler chose the wrong function to call.
-    //
-    // Repro case: http://cl.ly/3S0a1T0Q0S1D
-    // rdar://17412596, OpenRadar: http://www.openradar.me/radar?id=5275533159956480
-    
-    /// Builds a constraint by relating the item to another item.
-    public func relateTo(right: ALLayoutItem, relation: NSLayoutRelation) -> NSLayoutConstraint {
-        return NSLayoutConstraint(item: view, attribute: attribute, relatedBy: relation, toItem: right.view, attribute: right.attribute, multiplier: right.multiplier, constant: right.constant)
+    private func constrain(constant: CGFloat, relation: NSLayoutRelation) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: item, attribute: attribute, relatedBy: relation, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: constant)
     }
     
-    /// Builds a constraint by relating the item to a constant value.
-    public func relateToConstant(right: CGFloat, relation: NSLayoutRelation) -> NSLayoutConstraint {
-        return NSLayoutConstraint(item: view, attribute: attribute, relatedBy: relation, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: right)
+    private func itemWithMultiplier(multiplier: CGFloat) -> LayoutItem {
+        return LayoutItem(item: self.item, attribute: self.attribute, multiplier: multiplier, constant: self.constant)
     }
     
-    /// Equivalent to NSLayoutRelation.Equal
-    public func equalTo(right: ALLayoutItem) -> NSLayoutConstraint {
-        return relateTo(right, relation: .Equal)
-    }
-    
-    /// Equivalent to NSLayoutRelation.Equal
-    public func equalToConstant(right: CGFloat) -> NSLayoutConstraint {
-        return relateToConstant(right, relation: .Equal)
-    }
-    
-    /// Equivalent to NSLayoutRelation.GreaterThanOrEqual
-    public func greaterThanOrEqualTo(right: ALLayoutItem) -> NSLayoutConstraint {
-        return relateTo(right, relation: .GreaterThanOrEqual)
-    }
-    
-    /// Equivalent to NSLayoutRelation.GreaterThanOrEqual
-    public func greaterThanOrEqualToConstant(right: CGFloat) -> NSLayoutConstraint {
-        return relateToConstant(right, relation: .GreaterThanOrEqual)
-    }
-    
-    /// Equivalent to NSLayoutRelation.LessThanOrEqual
-    public func lessThanOrEqualTo(right: ALLayoutItem) -> NSLayoutConstraint {
-        return relateTo(right, relation: .LessThanOrEqual)
-    }
-    
-    /// Equivalent to NSLayoutRelation.LessThanOrEqual
-    public func lessThanOrEqualToConstant(right: CGFloat) -> NSLayoutConstraint {
-        return relateToConstant(right, relation: .LessThanOrEqual)
+    private func itemWithConstant(constant: CGFloat) -> LayoutItem {
+        return LayoutItem(item: self.item, attribute: self.attribute, multiplier: self.multiplier, constant: constant)
     }
 }
 
-/// Multiplies the operand's multiplier by the RHS value
-public func * (left: ALLayoutItem, right: CGFloat) -> ALLayoutItem {
-	return ALLayoutItem(view: left.view, attribute: left.attribute, multiplier: left.multiplier * right, constant: left.constant)
+public func *<C>(lhs: LayoutItem<C>, rhs: CGFloat) -> LayoutItem<C> {
+    return lhs.itemWithMultiplier(lhs.multiplier * rhs)
 }
 
-/// Divides the operand's multiplier by the RHS value
-public func / (left: ALLayoutItem, right: CGFloat) -> ALLayoutItem {
-	return ALLayoutItem(view: left.view, attribute: left.attribute, multiplier: left.multiplier / right, constant: left.constant)
+public func /<C>(lhs: LayoutItem<C>, rhs: CGFloat) -> LayoutItem<C> {
+    return lhs.itemWithMultiplier(lhs.multiplier / rhs)
 }
 
-/// Adds the RHS value to the operand's constant
-public func + (left: ALLayoutItem, right: CGFloat) -> ALLayoutItem {
-	return ALLayoutItem(view: left.view, attribute: left.attribute, multiplier: left.multiplier, constant: left.constant + right)
+public func +<C>(lhs: LayoutItem<C>, rhs: CGFloat) -> LayoutItem<C> {
+    return lhs.itemWithConstant(lhs.constant + rhs)
 }
 
-/// Subtracts the RHS value from the operand's constant
-public func - (left: ALLayoutItem, right: CGFloat) -> ALLayoutItem {
-	return ALLayoutItem(view: left.view, attribute: left.attribute, multiplier: left.multiplier, constant: left.constant - right)
+public func -<C>(lhs: LayoutItem<C>, rhs: CGFloat) -> LayoutItem<C> {
+    return lhs.itemWithConstant(lhs.constant - rhs)
 }
 
-/// Equivalent to NSLayoutRelation.Equal
-public func == (left: ALLayoutItem, right: ALLayoutItem) -> NSLayoutConstraint {
-	return left.equalTo(right)
+public func ==<C>(lhs: LayoutItem<C>, rhs: LayoutItem<C>) -> NSLayoutConstraint {
+    return lhs.constrain(rhs, relation: .Equal)
 }
 
-/// Equivalent to NSLayoutRelation.Equal
-public func == (left: ALLayoutItem, right: CGFloat) -> NSLayoutConstraint {
-    return left.equalToConstant(right)
+public func ==(lhs: LayoutItem<Dimension>, rhs: CGFloat) -> NSLayoutConstraint {
+    return lhs.constrain(rhs, relation: .Equal)
 }
 
-/// Equivalent to NSLayoutRelation.GreaterThanOrEqual
-public func >= (left: ALLayoutItem, right: ALLayoutItem) -> NSLayoutConstraint {
-	return left.greaterThanOrEqualTo(right)
+public func >=<C>(lhs: LayoutItem<C>, rhs: LayoutItem<C>) -> NSLayoutConstraint {
+    return lhs.constrain(rhs, relation: .GreaterThanOrEqual)
 }
 
-/// Equivalent to NSLayoutRelation.GreaterThanOrEqual
-public func >= (left: ALLayoutItem, right: CGFloat) -> NSLayoutConstraint {
-    return left.greaterThanOrEqualToConstant(right)
+public func >=(lhs: LayoutItem<Dimension>, rhs: CGFloat) -> NSLayoutConstraint {
+    return lhs.constrain(rhs, relation: .GreaterThanOrEqual)
 }
 
-/// Equivalent to NSLayoutRelation.LessThanOrEqual
-public func <= (left: ALLayoutItem, right: ALLayoutItem) -> NSLayoutConstraint {
-	return left.lessThanOrEqualTo(right)
+public func <=<C>(lhs: LayoutItem<C>, rhs: LayoutItem<C>) -> NSLayoutConstraint {
+    return lhs.constrain(rhs, relation: .LessThanOrEqual)
 }
 
-/// Equivalent to NSLayoutRelation.LessThanOrEqual
-public func <= (left: ALLayoutItem, right: CGFloat) -> NSLayoutConstraint {
-    return left.lessThanOrEqualToConstant(right)
+public func <=(lhs: LayoutItem<Dimension>, rhs: CGFloat) -> NSLayoutConstraint {
+    return lhs.constrain(rhs, relation: .LessThanOrEqual)
 }
 
-public extension ALView {
-    func al_operand(attribute: NSLayoutAttribute) -> ALLayoutItem {
-        return ALLayoutItem(view: self, attribute: attribute)
+public extension LayoutRegion {
+    private func layoutItem<C>(attribute: NSLayoutAttribute) -> LayoutItem<C> {
+        return LayoutItem(item: self, attribute: attribute, multiplier: 1.0, constant: 0.0)
     }
     
-    /// Equivalent to NSLayoutAttribute.Left
-    var al_left: ALLayoutItem {
-        return al_operand(.Left)
-    }
-    
-    /// Equivalent to NSLayoutAttribute.Right
-    var al_right: ALLayoutItem {
-        return al_operand(.Right)
-    }
-    
-    /// Equivalent to NSLayoutAttribute.Top
-    var al_top: ALLayoutItem {
-        return al_operand(.Top)
-    }
-    
-    /// Equivalent to NSLayoutAttribute.Bottom
-    var al_bottom: ALLayoutItem {
-        return al_operand(.Bottom)
-    }
-    
-    /// Equivalent to NSLayoutAttribute.Leading
-    var al_leading: ALLayoutItem {
-        return al_operand(.Leading)
-    }
-    
-    /// Equivalent to NSLayoutAttribute.Trailing
-    var al_trailing: ALLayoutItem {
-        return al_operand(.Trailing)
-    }
-    
-    /// Equivalent to NSLayoutAttribute.Width
-    var al_width: ALLayoutItem {
-        return al_operand(.Width)
-    }
-    
-    /// Equivalent to NSLayoutAttribute.Height
-    var al_height: ALLayoutItem {
-        return al_operand(.Height)
-    }
-    
-    /// Equivalent to NSLayoutAttribute.CenterX
-    var al_centerX: ALLayoutItem {
-        return al_operand(.CenterX)
-    }
-    
-    /// Equivalent to NSLayoutAttribute.CenterY
-    var al_centerY: ALLayoutItem {
-        return al_operand(.CenterY)
-    }
-    
-    /// Equivalent to NSLayoutAttribute.Baseline
-    var al_baseline: ALLayoutItem {
-        return al_operand(.Baseline)
-    }
+    public var left: LayoutItem<XAxis> { return layoutItem(.Left) }
+    public var right: LayoutItem<XAxis> { return layoutItem(.Right) }
+    public var top: LayoutItem<YAxis> { return layoutItem(.Top) }
+    public var bottom: LayoutItem<YAxis> { return layoutItem(.Bottom) }
+    public var leading: LayoutItem<XAxis> { return layoutItem(.Leading) }
+    public var trailing: LayoutItem<XAxis> { return layoutItem(.Trailing) }
+    public var width: LayoutItem<Dimension> { return layoutItem(.Width) }
+    public var height: LayoutItem<Dimension> { return layoutItem(.Height) }
+    public var centerX: LayoutItem<XAxis> { return layoutItem(.CenterX) }
+    public var centerY: LayoutItem<YAxis> { return layoutItem(.CenterY) }
+    public var baseline: LayoutItem<YAxis> { return layoutItem(.Baseline) }
+}
+
+infix operator ~ { associativity left precedence 120 }
+
+public func ~(lhs: NSLayoutConstraint, rhs: LayoutPriority) -> NSLayoutConstraint {
+    let newConstraint = NSLayoutConstraint(item: lhs.firstItem, attribute: lhs.firstAttribute, relatedBy: lhs.relation, toItem: lhs.secondItem, attribute: lhs.secondAttribute, multiplier: lhs.multiplier, constant: lhs.constant)
+    newConstraint.priority = rhs
+    return newConstraint
 }
