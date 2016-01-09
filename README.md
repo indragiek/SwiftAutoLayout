@@ -1,6 +1,6 @@
 ## SwiftAutoLayout
 
-SwiftAutoLayout is a tiny DSL for Autolayout (~90 LOC), intended to provide a more declarative way to express layout constraints. Here's a quick example:
+SwiftAutoLayout is a tiny DSL for Autolayout intended to provide a more declarative way to express layout constraints. Here's a quick example:
 
 ```swift
 // this:
@@ -22,6 +22,8 @@ SwiftAutoLayout allows you to more effectively communicate the intent of a const
 ### Attributes
 
 Layout attributes are defined as properties added in extensions of `UIView` and `UILayoutGuide` on iOS and `NSView` and `NSLayoutGuide` on OS X. For example, `UIView.width` and `UIView.height` represent `NSLayoutAttribute.Width` and `NSLayoutAttribute.Height`, respectively.
+
+Layout guides (conforming to `UILayoutSupport`) in `UIViewController` are also supported using the `topLayoutGuideTop`, `topLayoutGuideBottom`, `bottomLayoutGuideTop`, and `bottomLayoutGuideBottom` properties.
 
 ### Relations
 

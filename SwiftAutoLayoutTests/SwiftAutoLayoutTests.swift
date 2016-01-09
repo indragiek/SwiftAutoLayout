@@ -4,11 +4,19 @@
 import XCTest
 import SwiftAutoLayout
 
+#if os(iOS)
+private class ViewController: UIViewController {
+    private override func loadView() {
+        self.view = UIView(frame: CGRectZero)
+    }
+}
+#endif
+
 class SwiftAutoLayoutTests: XCTestCase {
     let view1 = View(frame: CGRectZero)
     let view2 = View(frame: CGRectZero)
     
-    func testAttributeValues() {
+    func testViewAttributeValues() {
         XCTAssertEqual(view1.left.attribute, NSLayoutAttribute.Left)
         XCTAssertEqual(view1.right.attribute, NSLayoutAttribute.Right)
         XCTAssertEqual(view1.top.attribute, NSLayoutAttribute.Top)
@@ -21,6 +29,17 @@ class SwiftAutoLayoutTests: XCTestCase {
         XCTAssertEqual(view1.centerY.attribute, NSLayoutAttribute.CenterY)
         XCTAssertEqual(view1.baseline.attribute, NSLayoutAttribute.Baseline)
     }
+    
+    #if os(iOS)
+    func testViewControllerAttributeValues() {
+        let viewController = ViewController()
+        print(viewController.view) // Load the view
+        XCTAssertEqual(viewController.topLayoutGuideTop.attribute, NSLayoutAttribute.Top)
+        XCTAssertEqual(viewController.topLayoutGuideBottom.attribute, NSLayoutAttribute.Bottom)
+        XCTAssertEqual(viewController.bottomLayoutGuideTop.attribute, NSLayoutAttribute.Top)
+        XCTAssertEqual(viewController.bottomLayoutGuideBottom.attribute, NSLayoutAttribute.Bottom)
+    }
+    #endif
     
     func testEqual() {
         let constraint = view1.left == view2.right;

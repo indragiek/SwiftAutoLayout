@@ -90,23 +90,43 @@ public func <=(lhs: LayoutItem<Dimension>, rhs: CGFloat) -> NSLayoutConstraint {
     return lhs.constrain(rhs, relation: .LessThanOrEqual)
 }
 
+private func layoutItem<C>(item: AnyObject, _ attribute: NSLayoutAttribute) -> LayoutItem<C> {
+    return LayoutItem(item: item, attribute: attribute, multiplier: 1.0, constant: 0.0)
+}
+
 public extension LayoutRegion {
-    private func layoutItem<C>(attribute: NSLayoutAttribute) -> LayoutItem<C> {
-        return LayoutItem(item: self, attribute: attribute, multiplier: 1.0, constant: 0.0)
+    public var left: LayoutItem<XAxis> { return layoutItem(self, .Left) }
+    public var right: LayoutItem<XAxis> { return layoutItem(self, .Right) }
+    public var top: LayoutItem<YAxis> { return layoutItem(self, .Top) }
+    public var bottom: LayoutItem<YAxis> { return layoutItem(self, .Bottom) }
+    public var leading: LayoutItem<XAxis> { return layoutItem(self, .Leading) }
+    public var trailing: LayoutItem<XAxis> { return layoutItem(self, .Trailing) }
+    public var width: LayoutItem<Dimension> { return layoutItem(self, .Width) }
+    public var height: LayoutItem<Dimension> { return layoutItem(self, .Height) }
+    public var centerX: LayoutItem<XAxis> { return layoutItem(self, .CenterX) }
+    public var centerY: LayoutItem<YAxis> { return layoutItem(self, .CenterY) }
+    public var baseline: LayoutItem<YAxis> { return layoutItem(self, .Baseline) }
+}
+
+#if os(iOS)
+public extension UIViewController {
+    public var topLayoutGuideTop: LayoutItem<YAxis> {
+        return layoutItem(topLayoutGuide, .Top)
     }
     
-    public var left: LayoutItem<XAxis> { return layoutItem(.Left) }
-    public var right: LayoutItem<XAxis> { return layoutItem(.Right) }
-    public var top: LayoutItem<YAxis> { return layoutItem(.Top) }
-    public var bottom: LayoutItem<YAxis> { return layoutItem(.Bottom) }
-    public var leading: LayoutItem<XAxis> { return layoutItem(.Leading) }
-    public var trailing: LayoutItem<XAxis> { return layoutItem(.Trailing) }
-    public var width: LayoutItem<Dimension> { return layoutItem(.Width) }
-    public var height: LayoutItem<Dimension> { return layoutItem(.Height) }
-    public var centerX: LayoutItem<XAxis> { return layoutItem(.CenterX) }
-    public var centerY: LayoutItem<YAxis> { return layoutItem(.CenterY) }
-    public var baseline: LayoutItem<YAxis> { return layoutItem(.Baseline) }
+    public var topLayoutGuideBottom: LayoutItem<YAxis> {
+        return layoutItem(topLayoutGuide, .Bottom)
+    }
+    
+    public var bottomLayoutGuideTop: LayoutItem<YAxis> {
+        return layoutItem(bottomLayoutGuide, .Top)
+    }
+    
+    public var bottomLayoutGuideBottom: LayoutItem<YAxis> {
+        return layoutItem(bottomLayoutGuide, .Bottom)
+    }
 }
+#endif
 
 infix operator ~ { associativity left precedence 120 }
 
