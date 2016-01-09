@@ -19,6 +19,10 @@ You may notice that this looks a lot like the linear equation that a constraint 
 
 SwiftAutoLayout allows you to more effectively communicate the intent of a constraint by making the syntax more similar to the equation that it represents.
 
+### Installing
+
+Use [Swift Package Manager](https://github.com/apple/swift-package-manager) or add `SwiftAutoLayout.xcodeproj` as a subproject and link against either `SwiftAutoLayout-iOS.framework` or `SwiftAutoLayout-Mac.framework` depending on the platform.
+
 ### Attributes
 
 Layout attributes are defined as properties added in extensions of `UIView` and `UILayoutGuide` on iOS and `NSView` and `NSLayoutGuide` on OS X. For example, `UIView.width` and `UIView.height` represent `NSLayoutAttribute.Width` and `NSLayoutAttribute.Height`, respectively.
