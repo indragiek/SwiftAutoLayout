@@ -8,7 +8,7 @@
     
     @available(OSX 10.11, *)
     public typealias LayoutGuide = NSLayoutGuide
-#elseif os(iOS)
+#elseif os(iOS) || os(tvOS)
     import UIKit
     public typealias View = UIView
     public typealias LayoutPriority = UILayoutPriority

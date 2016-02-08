@@ -13,6 +13,7 @@
 		725B5E6D1C40C5B100ABF520 /* SwiftAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B5E6B1C40C5B100ABF520 /* SwiftAutoLayout.swift */; };
 		725B5E731C40C5BB00ABF520 /* SwiftAutoLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 725B5E701C40C5BB00ABF520 /* SwiftAutoLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		725B5E741C40C5BB00ABF520 /* SwiftAutoLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 725B5E701C40C5BB00ABF520 /* SwiftAutoLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9FFAFD441C68E41B0012FD9B /* SwiftAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B5E6B1C40C5B100ABF520 /* SwiftAutoLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		725B5E6B1C40C5B100ABF520 /* SwiftAutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftAutoLayout.swift; path = Sources/SwiftAutoLayout.swift; sourceTree = SOURCE_ROOT; };
 		725B5E6F1C40C5BB00ABF520 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Framework/Info.plist; sourceTree = "<group>"; };
 		725B5E701C40C5BB00ABF520 /* SwiftAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwiftAutoLayout.h; path = Framework/SwiftAutoLayout.h; sourceTree = "<group>"; };
+		9FFAFD3C1C68E3F80012FD9B /* SwiftAutoLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftAutoLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9FFAFD381C68E3F80012FD9B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +87,7 @@
 				725A2B321A0468F300F44058 /* SwiftAutoLayout.framework */,
 				725A2B3D1A0468F300F44058 /* SwiftAutoLayoutTests.xctest */,
 				725A2B551A046A3C00F44058 /* SwiftAutoLayout.framework */,
+				9FFAFD3C1C68E3F80012FD9B /* SwiftAutoLayout.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,6 +143,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				725B5E741C40C5BB00ABF520 /* SwiftAutoLayout.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FFAFD391C68E3F80012FD9B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +210,24 @@
 			productReference = 725A2B551A046A3C00F44058 /* SwiftAutoLayout.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		9FFAFD3B1C68E3F80012FD9B /* SwiftAutoLayout-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FFAFD411C68E3F80012FD9B /* Build configuration list for PBXNativeTarget "SwiftAutoLayout-tvOS" */;
+			buildPhases = (
+				9FFAFD371C68E3F80012FD9B /* Sources */,
+				9FFAFD381C68E3F80012FD9B /* Frameworks */,
+				9FFAFD391C68E3F80012FD9B /* Headers */,
+				9FFAFD3A1C68E3F80012FD9B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SwiftAutoLayout-tvOS";
+			productName = "SwiftAutoLayout-tvOS";
+			productReference = 9FFAFD3C1C68E3F80012FD9B /* SwiftAutoLayout.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -212,6 +247,9 @@
 					725A2B541A046A3C00F44058 = {
 						CreatedOnToolsVersion = 6.1;
 					};
+					9FFAFD3B1C68E3F80012FD9B = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
 				};
 			};
 			buildConfigurationList = 725A2B2C1A0468F300F44058 /* Build configuration list for PBXProject "SwiftAutoLayout" */;
@@ -229,6 +267,7 @@
 				725A2B311A0468F300F44058 /* SwiftAutoLayout-iOS */,
 				725A2B3C1A0468F300F44058 /* SwiftAutoLayoutTests */,
 				725A2B541A046A3C00F44058 /* SwiftAutoLayout-Mac */,
+				9FFAFD3B1C68E3F80012FD9B /* SwiftAutoLayout-tvOS */,
 			);
 		};
 /* End PBXProject section */
@@ -249,6 +288,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		725A2B531A046A3C00F44058 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FFAFD3A1C68E3F80012FD9B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -279,6 +325,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				725B5E6D1C40C5B100ABF520 /* SwiftAutoLayout.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FFAFD371C68E3F80012FD9B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FFAFD441C68E41B0012FD9B /* SwiftAutoLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +552,49 @@
 			};
 			name = Release;
 		};
+		9FFAFD421C68E3F80012FD9B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Framework/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.indragie.SwiftAutoLayout-tvOS";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		9FFAFD431C68E3F80012FD9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Framework/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.indragie.SwiftAutoLayout-tvOS";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -536,6 +633,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		9FFAFD411C68E3F80012FD9B /* Build configuration list for PBXNativeTarget "SwiftAutoLayout-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FFAFD421C68E3F80012FD9B /* Debug */,
+				9FFAFD431C68E3F80012FD9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
