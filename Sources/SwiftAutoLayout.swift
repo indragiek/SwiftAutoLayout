@@ -105,10 +105,17 @@ public extension LayoutRegion {
     public var height: LayoutItem<Dimension> { return layoutItem(self, .Height) }
     public var centerX: LayoutItem<XAxis> { return layoutItem(self, .CenterX) }
     public var centerY: LayoutItem<YAxis> { return layoutItem(self, .CenterY) }
-    public var baseline: LayoutItem<YAxis> { return layoutItem(self, .Baseline) }
 }
 
-#if os(iOS)
+public extension View {
+    public var baseline: LayoutItem<YAxis> { return layoutItem(self, .Baseline) }
+    
+    @available(iOS 8.0, OSX 10.11, *)
+    public var firstBaseline: LayoutItem<YAxis> { return layoutItem(self, .FirstBaseline) }
+    public var lastBaseline: LayoutItem<YAxis> { return layoutItem(self, .LastBaseline) }
+}
+
+#if os(iOS) || os(tvOS)
 public extension UIViewController {
     public var topLayoutGuideTop: LayoutItem<YAxis> {
         return layoutItem(topLayoutGuide, .Top)
@@ -125,6 +132,17 @@ public extension UIViewController {
     public var bottomLayoutGuideBottom: LayoutItem<YAxis> {
         return layoutItem(bottomLayoutGuide, .Bottom)
     }
+}
+    
+public extension UIView {
+    public var leftMargin: LayoutItem<XAxis> { return layoutItem(self, .LeftMargin) }
+    public var rightMargin: LayoutItem<XAxis> { return layoutItem(self, .RightMargin) }
+    public var topMargin: LayoutItem<YAxis> { return layoutItem(self, .TopMargin) }
+    public var bottomMargin: LayoutItem<YAxis> { return layoutItem(self, .BottomMargin) }
+    public var leadingMargin: LayoutItem<XAxis> { return layoutItem(self, .LeadingMargin) }
+    public var trailingMargin: LayoutItem<XAxis> { return layoutItem(self, .TrailingMargin) }
+    public var centerXWithinMargins: LayoutItem<XAxis> { return layoutItem(self, .CenterXWithinMargins) }
+    public var centerYWithinMargins: LayoutItem<YAxis> { return layoutItem(self, .CenterYWithinMargins) }
 }
 #endif
 
