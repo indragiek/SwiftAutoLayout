@@ -4,7 +4,7 @@
 import XCTest
 import SwiftAutoLayout
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
 private class ViewController: UIViewController {
     private override func loadView() {
         self.view = UIView(frame: CGRectZero)

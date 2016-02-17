@@ -13,6 +13,10 @@
 		725B5E6D1C40C5B100ABF520 /* SwiftAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B5E6B1C40C5B100ABF520 /* SwiftAutoLayout.swift */; };
 		725B5E731C40C5BB00ABF520 /* SwiftAutoLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 725B5E701C40C5BB00ABF520 /* SwiftAutoLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		725B5E741C40C5BB00ABF520 /* SwiftAutoLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 725B5E701C40C5BB00ABF520 /* SwiftAutoLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		72B7DF4F1C74503A0012F276 /* SwiftAutoLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 725A2B551A046A3C00F44058 /* SwiftAutoLayout.framework */; };
+		72B7DF551C7450420012F276 /* SwiftAutoLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725A2B441A0468F300F44058 /* SwiftAutoLayoutTests.swift */; };
+		72B7DF5F1C74505A0012F276 /* SwiftAutoLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFAFD3C1C68E3F80012FD9B /* SwiftAutoLayout.framework */; };
+		72B7DF651C7450620012F276 /* SwiftAutoLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725A2B441A0468F300F44058 /* SwiftAutoLayoutTests.swift */; };
 		9FFAFD441C68E41B0012FD9B /* SwiftAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B5E6B1C40C5B100ABF520 /* SwiftAutoLayout.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,17 +28,33 @@
 			remoteGlobalIDString = 725A2B311A0468F300F44058;
 			remoteInfo = SwiftAutoLayout;
 		};
+		72B7DF501C74503A0012F276 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 725A2B291A0468F300F44058 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 725A2B541A046A3C00F44058;
+			remoteInfo = "SwiftAutoLayout-Mac";
+		};
+		72B7DF601C74505A0012F276 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 725A2B291A0468F300F44058 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FFAFD3B1C68E3F80012FD9B;
+			remoteInfo = "SwiftAutoLayout-tvOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		725A2B321A0468F300F44058 /* SwiftAutoLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftAutoLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		725A2B3D1A0468F300F44058 /* SwiftAutoLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftAutoLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		725A2B3D1A0468F300F44058 /* SwiftAutoLayoutTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftAutoLayoutTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		725A2B431A0468F300F44058 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		725A2B441A0468F300F44058 /* SwiftAutoLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftAutoLayoutTests.swift; sourceTree = "<group>"; };
 		725A2B551A046A3C00F44058 /* SwiftAutoLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftAutoLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		725B5E6B1C40C5B100ABF520 /* SwiftAutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftAutoLayout.swift; path = Sources/SwiftAutoLayout.swift; sourceTree = SOURCE_ROOT; };
 		725B5E6F1C40C5BB00ABF520 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Framework/Info.plist; sourceTree = "<group>"; };
 		725B5E701C40C5BB00ABF520 /* SwiftAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwiftAutoLayout.h; path = Framework/SwiftAutoLayout.h; sourceTree = "<group>"; };
+		72B7DF4A1C74503A0012F276 /* SwiftAutoLayoutTests-Mac.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftAutoLayoutTests-Mac.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		72B7DF5A1C74505A0012F276 /* SwiftAutoLayoutTests-tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftAutoLayoutTests-tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FFAFD3C1C68E3F80012FD9B /* SwiftAutoLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftAutoLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -58,6 +78,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72B7DF471C74503A0012F276 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72B7DF4F1C74503A0012F276 /* SwiftAutoLayout.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72B7DF571C74505A0012F276 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72B7DF5F1C74505A0012F276 /* SwiftAutoLayout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,9 +121,11 @@
 			isa = PBXGroup;
 			children = (
 				725A2B321A0468F300F44058 /* SwiftAutoLayout.framework */,
-				725A2B3D1A0468F300F44058 /* SwiftAutoLayoutTests.xctest */,
+				725A2B3D1A0468F300F44058 /* SwiftAutoLayoutTests-iOS.xctest */,
 				725A2B551A046A3C00F44058 /* SwiftAutoLayout.framework */,
 				9FFAFD3C1C68E3F80012FD9B /* SwiftAutoLayout.framework */,
+				72B7DF4A1C74503A0012F276 /* SwiftAutoLayoutTests-Mac.xctest */,
+				72B7DF5A1C74505A0012F276 /* SwiftAutoLayoutTests-tvOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -174,9 +212,9 @@
 			productReference = 725A2B321A0468F300F44058 /* SwiftAutoLayout.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		725A2B3C1A0468F300F44058 /* SwiftAutoLayoutTests */ = {
+		725A2B3C1A0468F300F44058 /* SwiftAutoLayoutTests-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 725A2B4B1A0468F300F44058 /* Build configuration list for PBXNativeTarget "SwiftAutoLayoutTests" */;
+			buildConfigurationList = 725A2B4B1A0468F300F44058 /* Build configuration list for PBXNativeTarget "SwiftAutoLayoutTests-iOS" */;
 			buildPhases = (
 				725A2B391A0468F300F44058 /* Sources */,
 				725A2B3A1A0468F300F44058 /* Frameworks */,
@@ -187,9 +225,9 @@
 			dependencies = (
 				725A2B401A0468F300F44058 /* PBXTargetDependency */,
 			);
-			name = SwiftAutoLayoutTests;
+			name = "SwiftAutoLayoutTests-iOS";
 			productName = SwiftAutoLayoutTests;
-			productReference = 725A2B3D1A0468F300F44058 /* SwiftAutoLayoutTests.xctest */;
+			productReference = 725A2B3D1A0468F300F44058 /* SwiftAutoLayoutTests-iOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		725A2B541A046A3C00F44058 /* SwiftAutoLayout-Mac */ = {
@@ -209,6 +247,42 @@
 			productName = "SwiftAutoLayout-Mac";
 			productReference = 725A2B551A046A3C00F44058 /* SwiftAutoLayout.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		72B7DF491C74503A0012F276 /* SwiftAutoLayoutTests-Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72B7DF521C74503A0012F276 /* Build configuration list for PBXNativeTarget "SwiftAutoLayoutTests-Mac" */;
+			buildPhases = (
+				72B7DF461C74503A0012F276 /* Sources */,
+				72B7DF471C74503A0012F276 /* Frameworks */,
+				72B7DF481C74503A0012F276 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				72B7DF511C74503A0012F276 /* PBXTargetDependency */,
+			);
+			name = "SwiftAutoLayoutTests-Mac";
+			productName = "SwiftAutoLayoutTests-Mac";
+			productReference = 72B7DF4A1C74503A0012F276 /* SwiftAutoLayoutTests-Mac.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		72B7DF591C74505A0012F276 /* SwiftAutoLayoutTests-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72B7DF621C74505A0012F276 /* Build configuration list for PBXNativeTarget "SwiftAutoLayoutTests-tvOS" */;
+			buildPhases = (
+				72B7DF561C74505A0012F276 /* Sources */,
+				72B7DF571C74505A0012F276 /* Frameworks */,
+				72B7DF581C74505A0012F276 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				72B7DF611C74505A0012F276 /* PBXTargetDependency */,
+			);
+			name = "SwiftAutoLayoutTests-tvOS";
+			productName = "SwiftAutoLayoutTests-tvOS";
+			productReference = 72B7DF5A1C74505A0012F276 /* SwiftAutoLayoutTests-tvOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		9FFAFD3B1C68E3F80012FD9B /* SwiftAutoLayout-tvOS */ = {
 			isa = PBXNativeTarget;
@@ -234,7 +308,7 @@
 		725A2B291A0468F300F44058 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Indragie Karunaratne";
 				TargetAttributes = {
@@ -246,6 +320,12 @@
 					};
 					725A2B541A046A3C00F44058 = {
 						CreatedOnToolsVersion = 6.1;
+					};
+					72B7DF491C74503A0012F276 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					72B7DF591C74505A0012F276 = {
+						CreatedOnToolsVersion = 7.3;
 					};
 					9FFAFD3B1C68E3F80012FD9B = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -265,9 +345,11 @@
 			projectRoot = "";
 			targets = (
 				725A2B311A0468F300F44058 /* SwiftAutoLayout-iOS */,
-				725A2B3C1A0468F300F44058 /* SwiftAutoLayoutTests */,
 				725A2B541A046A3C00F44058 /* SwiftAutoLayout-Mac */,
 				9FFAFD3B1C68E3F80012FD9B /* SwiftAutoLayout-tvOS */,
+				725A2B3C1A0468F300F44058 /* SwiftAutoLayoutTests-iOS */,
+				72B7DF491C74503A0012F276 /* SwiftAutoLayoutTests-Mac */,
+				72B7DF591C74505A0012F276 /* SwiftAutoLayoutTests-tvOS */,
 			);
 		};
 /* End PBXProject section */
@@ -288,6 +370,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		725A2B531A046A3C00F44058 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72B7DF481C74503A0012F276 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72B7DF581C74505A0012F276 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -328,6 +424,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		72B7DF461C74503A0012F276 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72B7DF551C7450420012F276 /* SwiftAutoLayoutTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72B7DF561C74505A0012F276 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72B7DF651C7450620012F276 /* SwiftAutoLayoutTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FFAFD371C68E3F80012FD9B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -343,6 +455,16 @@
 			isa = PBXTargetDependency;
 			target = 725A2B311A0468F300F44058 /* SwiftAutoLayout-iOS */;
 			targetProxy = 725A2B3F1A0468F300F44058 /* PBXContainerItemProxy */;
+		};
+		72B7DF511C74503A0012F276 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 725A2B541A046A3C00F44058 /* SwiftAutoLayout-Mac */;
+			targetProxy = 72B7DF501C74503A0012F276 /* PBXContainerItemProxy */;
+		};
+		72B7DF611C74505A0012F276 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9FFAFD3B1C68E3F80012FD9B /* SwiftAutoLayout-tvOS */;
+			targetProxy = 72B7DF601C74505A0012F276 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -552,6 +674,72 @@
 			};
 			name = Release;
 		};
+		72B7DF531C74503A0012F276 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = SwiftAutoLayoutTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.indragie.SwiftAutoLayoutTests-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		72B7DF541C74503A0012F276 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = SwiftAutoLayoutTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.indragie.SwiftAutoLayoutTests-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		72B7DF631C74505A0012F276 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = SwiftAutoLayoutTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.indragie.SwiftAutoLayoutTests-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		72B7DF641C74505A0012F276 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = SwiftAutoLayoutTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.indragie.SwiftAutoLayoutTests-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Release;
+		};
 		9FFAFD421C68E3F80012FD9B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -616,7 +804,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		725A2B4B1A0468F300F44058 /* Build configuration list for PBXNativeTarget "SwiftAutoLayoutTests" */ = {
+		725A2B4B1A0468F300F44058 /* Build configuration list for PBXNativeTarget "SwiftAutoLayoutTests-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				725A2B4C1A0468F300F44058 /* Debug */,
@@ -634,6 +822,22 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		72B7DF521C74503A0012F276 /* Build configuration list for PBXNativeTarget "SwiftAutoLayoutTests-Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72B7DF531C74503A0012F276 /* Debug */,
+				72B7DF541C74503A0012F276 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		72B7DF621C74505A0012F276 /* Build configuration list for PBXNativeTarget "SwiftAutoLayoutTests-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72B7DF631C74505A0012F276 /* Debug */,
+				72B7DF641C74505A0012F276 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		9FFAFD411C68E3F80012FD9B /* Build configuration list for PBXNativeTarget "SwiftAutoLayout-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -641,6 +845,7 @@
 				9FFAFD431C68E3F80012FD9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
