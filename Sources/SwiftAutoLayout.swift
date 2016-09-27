@@ -108,7 +108,7 @@ public extension LayoutRegion {
 }
 
 public extension View {
-    public var baseline: LayoutItem<YAxis> { return layoutItem(self, .Baseline) }
+    public var baseline: LayoutItem<YAxis> { return layoutItem(self, .LastBaseline) }
     
     @available(iOS 8.0, OSX 10.11, *)
     public var firstBaseline: LayoutItem<YAxis> { return layoutItem(self, .FirstBaseline) }
