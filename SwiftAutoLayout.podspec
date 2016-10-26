@@ -9,5 +9,6 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.9"
   s.source       = { :git => "https://github.com/indragiek/SwiftAutoLayout.git", :tag => "#{s.version}" }
   s.source_files = "Sources/*.{swift}"
-  s.framework    = "UIKit"
+  s.ios.framework = "UIKit"
+  s.osx.framework = "Cocoa"
 end
