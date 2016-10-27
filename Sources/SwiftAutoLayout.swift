@@ -108,7 +108,7 @@ public extension LayoutRegion {
 }
 
 public extension View {
-    public var baseline: LayoutItem<YAxis> { return layoutItem(self, .Baseline) }
+    public var baseline: LayoutItem<YAxis> { return layoutItem(self, .LastBaseline) }
     
     @available(iOS 8.0, OSX 10.11, *)
     public var firstBaseline: LayoutItem<YAxis> { return layoutItem(self, .FirstBaseline) }
@@ -149,7 +149,11 @@ public extension UIView {
 infix operator ~ { associativity left precedence 120 }
 
 public func ~(lhs: NSLayoutConstraint, rhs: LayoutPriority) -> NSLayoutConstraint {
-    let newConstraint = NSLayoutConstraint(item: lhs.firstItem, attribute: lhs.firstAttribute, relatedBy: lhs.relation, toItem: lhs.secondItem, attribute: lhs.secondAttribute, multiplier: lhs.multiplier, constant: lhs.constant)
+    #if os(OSX)
+    let newConstraint = NSLayoutConstraint(item: lhs.firstItem!, attribute: lhs.firstAttribute, relatedBy: lhs.relation, toItem: lhs.secondItem, attribute: lhs.secondAttribute, multiplier: lhs.multiplier, constant: lhs.constant)
+    #else
+        let newConstraint = NSLayoutConstraint(item: lhs.firstItem, attribute: lhs.firstAttribute, relatedBy: lhs.relation, toItem: lhs.secondItem, attribute: lhs.secondAttribute, multiplier: lhs.multiplier, constant: lhs.constant)
+    #endif
     newConstraint.priority = rhs
     return newConstraint
 }
