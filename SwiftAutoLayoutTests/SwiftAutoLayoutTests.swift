@@ -6,51 +6,51 @@ import SwiftAutoLayout
 
 #if os(iOS) || os(tvOS)
 private class ViewController: UIViewController {
-    private override func loadView() {
-        self.view = UIView(frame: CGRectZero)
+    fileprivate override func loadView() {
+        self.view = UIView(frame: CGRect.zero)
     }
 }
 #endif
 
 class SwiftAutoLayoutTests: XCTestCase {
-    let view1 = View(frame: CGRectZero)
-    let view2 = View(frame: CGRectZero)
+    let view1 = View(frame: CGRect.zero)
+    let view2 = View(frame: CGRect.zero)
     
     func testViewAttributeValues() {
-        XCTAssertEqual(view1.left.attribute, NSLayoutAttribute.Left)
-        XCTAssertEqual(view1.right.attribute, NSLayoutAttribute.Right)
-        XCTAssertEqual(view1.top.attribute, NSLayoutAttribute.Top)
-        XCTAssertEqual(view1.bottom.attribute, NSLayoutAttribute.Bottom)
-        XCTAssertEqual(view1.leading.attribute, NSLayoutAttribute.Leading)
-        XCTAssertEqual(view1.trailing.attribute, NSLayoutAttribute.Trailing)
-        XCTAssertEqual(view1.width.attribute, NSLayoutAttribute.Width)
-        XCTAssertEqual(view1.height.attribute, NSLayoutAttribute.Height)
-        XCTAssertEqual(view1.centerX.attribute, NSLayoutAttribute.CenterX)
-        XCTAssertEqual(view1.centerY.attribute, NSLayoutAttribute.CenterY)
-        XCTAssertEqual(view1.baseline.attribute, NSLayoutAttribute.Baseline)
-        XCTAssertEqual(view1.firstBaseline.attribute, NSLayoutAttribute.FirstBaseline)
-        XCTAssertEqual(view1.lastBaseline.attribute, NSLayoutAttribute.LastBaseline)
+        XCTAssertEqual(view1.left.attribute, NSLayoutAttribute.left)
+        XCTAssertEqual(view1.right.attribute, NSLayoutAttribute.right)
+        XCTAssertEqual(view1.top.attribute, NSLayoutAttribute.top)
+        XCTAssertEqual(view1.bottom.attribute, NSLayoutAttribute.bottom)
+        XCTAssertEqual(view1.leading.attribute, NSLayoutAttribute.leading)
+        XCTAssertEqual(view1.trailing.attribute, NSLayoutAttribute.trailing)
+        XCTAssertEqual(view1.width.attribute, NSLayoutAttribute.width)
+        XCTAssertEqual(view1.height.attribute, NSLayoutAttribute.height)
+        XCTAssertEqual(view1.centerX.attribute, NSLayoutAttribute.centerX)
+        XCTAssertEqual(view1.centerY.attribute, NSLayoutAttribute.centerY)
+        XCTAssertEqual(view1.baseline.attribute, NSLayoutAttribute.lastBaseline)
+        XCTAssertEqual(view1.firstBaseline.attribute, NSLayoutAttribute.firstBaseline)
+        XCTAssertEqual(view1.lastBaseline.attribute, NSLayoutAttribute.lastBaseline)
     }
     
     #if os(iOS) || os(tvOS)
     func testViewMarginAttributeValues() {
-        XCTAssertEqual(view1.leftMargin.attribute, NSLayoutAttribute.LeftMargin)
-        XCTAssertEqual(view1.rightMargin.attribute, NSLayoutAttribute.RightMargin)
-        XCTAssertEqual(view1.topMargin.attribute, NSLayoutAttribute.TopMargin)
-        XCTAssertEqual(view1.bottomMargin.attribute, NSLayoutAttribute.BottomMargin)
-        XCTAssertEqual(view1.leadingMargin.attribute, NSLayoutAttribute.LeadingMargin)
-        XCTAssertEqual(view1.trailingMargin.attribute, NSLayoutAttribute.TrailingMargin)
-        XCTAssertEqual(view1.centerXWithinMargins.attribute, NSLayoutAttribute.CenterXWithinMargins)
-        XCTAssertEqual(view1.centerYWithinMargins.attribute, NSLayoutAttribute.CenterYWithinMargins)
+        XCTAssertEqual(view1.leftMargin.attribute, NSLayoutAttribute.leftMargin)
+        XCTAssertEqual(view1.rightMargin.attribute, NSLayoutAttribute.rightMargin)
+        XCTAssertEqual(view1.topMargin.attribute, NSLayoutAttribute.topMargin)
+        XCTAssertEqual(view1.bottomMargin.attribute, NSLayoutAttribute.bottomMargin)
+        XCTAssertEqual(view1.leadingMargin.attribute, NSLayoutAttribute.leadingMargin)
+        XCTAssertEqual(view1.trailingMargin.attribute, NSLayoutAttribute.trailingMargin)
+        XCTAssertEqual(view1.centerXWithinMargins.attribute, NSLayoutAttribute.centerXWithinMargins)
+        XCTAssertEqual(view1.centerYWithinMargins.attribute, NSLayoutAttribute.centerYWithinMargins)
     }
     
     func testViewControllerAttributeValues() {
         let viewController = ViewController()
         print(viewController.view) // Load the view
-        XCTAssertEqual(viewController.topLayoutGuideTop.attribute, NSLayoutAttribute.Top)
-        XCTAssertEqual(viewController.topLayoutGuideBottom.attribute, NSLayoutAttribute.Bottom)
-        XCTAssertEqual(viewController.bottomLayoutGuideTop.attribute, NSLayoutAttribute.Top)
-        XCTAssertEqual(viewController.bottomLayoutGuideBottom.attribute, NSLayoutAttribute.Bottom)
+        XCTAssertEqual(viewController.topLayoutGuideTop.attribute, NSLayoutAttribute.top)
+        XCTAssertEqual(viewController.topLayoutGuideBottom.attribute, NSLayoutAttribute.bottom)
+        XCTAssertEqual(viewController.bottomLayoutGuideTop.attribute, NSLayoutAttribute.top)
+        XCTAssertEqual(viewController.bottomLayoutGuideBottom.attribute, NSLayoutAttribute.bottom)
     }
     #endif
     
@@ -58,21 +58,21 @@ class SwiftAutoLayoutTests: XCTestCase {
         let constraint = view1.left == view2.right;
         XCTAssertEqual(constraint.firstItem as? View, view1)
         XCTAssertEqual(constraint.secondItem as? View, view2)
-        XCTAssertEqual(constraint.relation, NSLayoutRelation.Equal)
+        XCTAssertEqual(constraint.relation, NSLayoutRelation.equal)
     }
     
     func testGreaterThanOrEqual() {
         let constraint = view1.left >= view2.right;
         XCTAssertEqual(constraint.firstItem as? View, view1)
         XCTAssertEqual(constraint.secondItem as? View, view2)
-        XCTAssertEqual(constraint.relation, NSLayoutRelation.GreaterThanOrEqual)
+        XCTAssertEqual(constraint.relation, NSLayoutRelation.greaterThanOrEqual)
     }
     
     func testLessThanOrEqual() {
         let constraint = view1.left <= view2.right;
         XCTAssertEqual(constraint.firstItem as? View, view1)
         XCTAssertEqual(constraint.secondItem as? View, view2)
-        XCTAssertEqual(constraint.relation, NSLayoutRelation.LessThanOrEqual)
+        XCTAssertEqual(constraint.relation, NSLayoutRelation.lessThanOrEqual)
     }
     
     func testAddition() {
@@ -109,10 +109,10 @@ class SwiftAutoLayoutTests: XCTestCase {
         let c1 = view2.right * 2.0 / 0.5 + 20.0 - 10.0
         let constraint = view1.left == c1 ~ 600
         XCTAssertEqual(constraint.firstItem as? View, view1)
-        XCTAssertEqual(constraint.firstAttribute, NSLayoutAttribute.Left)
-        XCTAssertEqual(constraint.relation, NSLayoutRelation.Equal)
+        XCTAssertEqual(constraint.firstAttribute, NSLayoutAttribute.left)
+        XCTAssertEqual(constraint.relation, NSLayoutRelation.equal)
         XCTAssertEqual(constraint.secondItem as? View, view2)
-        XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.Right)
+        XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.right)
         XCTAssertEqual(constraint.constant, 10.0)
         XCTAssertEqual(constraint.multiplier, 4.0)
         XCTAssertEqual(constraint.priority, 600)
@@ -143,7 +143,7 @@ class SwiftAutoLayoutTests: XCTestCase {
         let constraint = view1.left >= layoutGuide.right * 2.0 - 10.0 ~ 600
         XCTAssertEqual(constraint.firstItem as? View, view1)
         XCTAssertEqual(constraint.secondItem as? LayoutGuide, layoutGuide)
-        XCTAssertEqual(constraint.relation, NSLayoutRelation.GreaterThanOrEqual)
+        XCTAssertEqual(constraint.relation, NSLayoutRelation.greaterThanOrEqual)
         XCTAssertEqual(constraint.constant, -10.0)
         XCTAssertEqual(constraint.multiplier, 2.0)
         XCTAssertEqual(constraint.priority, 600)
